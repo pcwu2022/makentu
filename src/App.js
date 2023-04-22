@@ -1,23 +1,25 @@
-import logo from './logo.svg';
 import './App.css';
+import React from 'react';
+import {BrowserRouter as Router, Route,Routes,Switch} from "react-router-dom";
+import LoginPage from './Pages/LoginPage.js';
+import MainPage from './Pages/MainPage.js';
+import AddPage from './Pages/AddPage.js';
+import PillDetail from './Pages/components/PillDetail.js';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="APP">
+      <h1>SMART PILLBOX</h1>
+      <Router>
+      <switch>
+        <Routes>
+          <Route path="/" element={<LoginPage/>} />
+          <Route path='/MainPage' element={<MainPage/>}/>
+          <Route path='/AddPill' element={<AddPage/>}/>
+          <Route path='/pills/:id' element={<PillDetail/>}/>
+        </Routes>
+      </switch>  
+      </Router>
     </div>
   );
 }
