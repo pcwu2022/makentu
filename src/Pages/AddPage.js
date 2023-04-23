@@ -4,8 +4,19 @@ const AddPill = () => {
     const [name,setName] = useState('');
     const [intro,setIntro] = useState('');
     const [num,setNum] =useState(0);
-    const [time,setTime] =useState();
-    const [dose,setDose] =useState(0);
+    // const [time,setTime] =useState();
+    // const [dose,setDose] =useState(0);
+    const [giveDrug,setGiveDrug] = useState([{time: '', dose: ''}]);
+    const handleInput = (e,index) =>{
+        const newgiveDrug = [...giveDrug];
+        newgiveDrug [index][e.target.name] = e.target.value;
+        setGiveDrug(newgiveDrug);
+    }
+    const AddGiveDrug = (e) =>{
+        //const newgiveDrug = [...giveDrug];
+        setGiveDrug([...giveDrug,{time: '', dose: ''}]);
+    }
+
     return  (
         <div className="AddPill">
             <h2> ADD A NEW DRUG </h2>
@@ -26,6 +37,14 @@ const AddPill = () => {
                         onChange={(e)=>setIntro(e.target.value)}
                     ></textarea>
                 <br></br>
+
+                <label>Pill Photo: </label>
+                <br></br>
+                <form action="/action_page.php">
+                <input type="file" id="myfile" name="myfile" />
+                <br></br>
+                </form>
+
                 <label> Drug Remaining Number: </label>
                     <input 
                         type="number"
@@ -34,28 +53,36 @@ const AddPill = () => {
                         onChange={(e)=>setNum(e.target.value)}
                     />
                 <br></br>
-                <div class="form-group col-12 col-lg-4"> 
-                    <label> Time: </label>
-                        <input 
-                            type="time"
-                            required
-                            value={time}
-                            min="00:00" 
-                            max="24:00"
-                            onChange={(e)=>setTime(e.target.value)}
-                        />
-                     <label> Dose: </label>  
-                        <input 
-                            type="number"
-                            required
-                            value={dose}
-                            onChange={(e)=>setDose(e.target.value)}
-                        />  
-                </div>
-                <button> ADD TIME </button>
-                <br></br>
-                <button> SAVE </button>
             </form>
+            {giveDrug.map((item, index) => {
+                return(
+                    <div class="form-group col-12 col-lg-4"> 
+                        <label> Time: </label>
+                            <input 
+                                name="time"
+                                type="time"
+                                required
+                                value={item.time}
+                                min="00:00" 
+                                max="24:00"
+                                onChange={(e) =>handleInput(e,index)}
+                            />
+                        <label> Dose: </label>  
+                            <input 
+                                name="dose"
+                                type="number"
+                                required
+                                min="1"
+                                value={item.dose}
+                                onChange={(e) =>handleInput(e,index)}
+                            />  
+                    </div>
+                )
+            })}
+            <br></br>
+            <button onClick={AddGiveDrug}> ADD TIME </button>
+            <br></br>
+            <button > SAVE </button>
         </div>
     );
 }
