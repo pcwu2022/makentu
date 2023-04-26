@@ -1,16 +1,28 @@
-import { React, useState } from "react";
+import { React, useState, useEffect } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 
 const LoginPage = () =>{
     // set state username, password
     const [usernameState, setUsernameState] = useState("");
     const [passwordState, setPasswordState] = useState("");
+    const location = useLocation();
+    const navigate = useNavigate();
+
+    // check if user is logged in
+    useEffect(() => {
+        if (location.state !== null){   
+            if (location.state.username !== null){
+                navigate("/MainPage", {state: location.state});
+            }
+        }
+    });
 
     const handleLogin = (e) =>{//目前不會處理
-        // <Link to="/MainPage">
-        // </Link>
         e.preventDefault();
+        // check if password exists
         console.log(usernameState, passwordState);
+        // go to main page
+        navigate("/MainPage", {state: {username: usernameState}});
     }
     return(
         <div className="Login">
@@ -18,7 +30,7 @@ const LoginPage = () =>{
             {/* <UsernameInput />
             <PasswordInput />
             <SubmitLoginButton /> */}
-            <form >
+            <form>
                 <label htmlFor="username">Username:</label>
                 <br></br>
                 <input 

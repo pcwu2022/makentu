@@ -1,8 +1,19 @@
-import { React, useState } from "react";
-import { Link } from "react-router-dom";
+import { React, useState, useEffect } from "react";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import PillGrid from './components/PillGrid';
 
 const MainPage = () =>{
+    // get username from location
+    const location = useLocation();
+    const navigate = useNavigate();
+
+    // redirect if username is not present
+    useEffect(() => {
+        if (location.state === null || location.state.username === null){
+            navigate("/", {state: {username: null}});
+        }
+    });
+
     const [Pills,setPills] = useState([
         {name: 'Aspirin', intro: 'for fever',num: 7, id: 1 },
         {name: 'Prolactin', intro: 'pain relief',num: 7, id: 2 }
