@@ -29,7 +29,7 @@ const AddPill = () => {
                         onChange={(e)=>setName(e.target.value)}
                     />
                 <br></br>
-                <label> Drug Discription: </label>
+                <label> Drug Description: </label>
                     <textarea 
                         type="text"
                         required
@@ -40,10 +40,8 @@ const AddPill = () => {
 
                 <label>Pill Photo: </label>
                 <br></br>
-                <form action="/action_page.php">
                 <input type="file" id="myfile" name="myfile" />
                 <br></br>
-                </form>
 
                 <label> Drug Remaining Number: </label>
                     <input 
