@@ -1,6 +1,9 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { useLocation, useNavigate } from "react-router-dom"; 
 
 const AddPill = () => {
+    const location = useLocation();
+    const navigate = useNavigate();
     const [name,setName] = useState('');
     const [intro,setIntro] = useState('');
     const [num,setNum] =useState(0);
@@ -16,6 +19,10 @@ const AddPill = () => {
         //const newgiveDrug = [...giveDrug];
         setGiveDrug([...giveDrug,{time: '', dose: ''}]);
     }
+
+    useEffect(() => {
+        console.log()
+    });
 
     return  (
         <div className="AddPill">

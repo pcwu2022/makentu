@@ -5,44 +5,32 @@
                 "name": "Drug01",
                 "intro": "",
                 "num": "0",
-                "giveDrug": [
-                    {"time": "06:00", "dose": "1"}
-                ]
+                "giveDrug": []
             },{
                 "name": "Drug02",
                 "intro": "",
                 "num": "0",
-                "giveDrug": [
-                    {"time": "06:00", "dose": "1"}
-                ]
+                "giveDrug": []
             },{
                 "name": "Drug03",
                 "intro": "",
                 "num": "0",
-                "giveDrug": [
-                    {"time": "06:00", "dose": "1"}
-                ]
+                "giveDrug": []
             },{
                 "name": "Drug04",
                 "intro": "",
                 "num": "0",
-                "giveDrug": [
-                    {"time": "06:00", "dose": "1"}
-                ]
+                "giveDrug": []
             },{
                 "name": "Drug05",
                 "intro": "",
                 "num": "0",
-                "giveDrug": [
-                    {"time": "06:00", "dose": "1"}
-                ]
+                "giveDrug": []
             },{
                 "name": "Drug06",
                 "intro": "",
                 "num": "0",
-                "giveDrug": [
-                    {"time": "06:00", "dose": "1"}
-                ]
+                "giveDrug": []
             }
         ],
         "arduino8266": [

@@ -14,7 +14,12 @@ app.use(cors());
 
 app.get('/getdata/:action', apihandler.getData);
 
+app.post('/postdata/:action', apihandler.postData);
+
 app.get('*', (req, res) => {
+    res.send({message: "Hello, welcome to the backend port."});
+});
+app.post('*', (req, res) => {
     res.send({message: "Hello, welcome to the backend port."});
 });
 

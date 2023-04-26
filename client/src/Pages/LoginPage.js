@@ -1,6 +1,9 @@
 import { React, useState, useEffect } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 
+// backend href
+const backHref = "http://localhost:3001/";
+
 const LoginPage = () =>{
     // set state username, password
     const [usernameState, setUsernameState] = useState("");
@@ -20,10 +23,44 @@ const LoginPage = () =>{
     const handleLogin = (e) =>{
         e.preventDefault();
         // check if password exists
-        // !connect to database
-        console.log(usernameState, passwordState);
-        // go to main page
-        navigate("/MainPage", {state: {username: usernameState}});
+        let jsonData = {};
+        fetch(backHref + "postdata/login", {
+            method: "POST",
+            mode: "cors",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                username: usernameState,
+                password: passwordState
+            })
+        })
+        .then(data => data.json())
+        .then((data) => {
+            jsonData = data;
+            
+            // data processing
+            if (jsonData.success === false){
+                alert("Message:" + jsonData.message);
+            } else {
+
+            }
+            // go to main page
+            if (jsonData.success === true){
+                navigate("/MainPage", {
+                    state: {
+                        username: usernameState, 
+                        device: jsonData.deviceName, 
+                        data: jsonData.deviceData
+                    }
+                });
+            }
+        })
+        .catch((err) => {
+            console.error(err);
+        });
+        
+        
     }
     return(
         <div className="Login">
