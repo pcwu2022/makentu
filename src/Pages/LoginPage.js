@@ -17,9 +17,10 @@ const LoginPage = () =>{
         }
     });
 
-    const handleLogin = (e) =>{//目前不會處理
+    const handleLogin = (e) =>{
         e.preventDefault();
         // check if password exists
+        // !connect to database
         console.log(usernameState, passwordState);
         // go to main page
         navigate("/MainPage", {state: {username: usernameState}});
