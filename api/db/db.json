@@ -1,0 +1,104 @@
+{
+    "devices": {
+        "defaultDevice": [
+            {
+                "name": "Drug01",
+                "intro": "",
+                "num": "0",
+                "giveDrug": [
+                    {"time": "06:00", "dose": "1"}
+                ]
+            },{
+                "name": "Drug02",
+                "intro": "",
+                "num": "0",
+                "giveDrug": [
+                    {"time": "06:00", "dose": "1"}
+                ]
+            },{
+                "name": "Drug03",
+                "intro": "",
+                "num": "0",
+                "giveDrug": [
+                    {"time": "06:00", "dose": "1"}
+                ]
+            },{
+                "name": "Drug04",
+                "intro": "",
+                "num": "0",
+                "giveDrug": [
+                    {"time": "06:00", "dose": "1"}
+                ]
+            },{
+                "name": "Drug05",
+                "intro": "",
+                "num": "0",
+                "giveDrug": [
+                    {"time": "06:00", "dose": "1"}
+                ]
+            },{
+                "name": "Drug06",
+                "intro": "",
+                "num": "0",
+                "giveDrug": [
+                    {"time": "06:00", "dose": "1"}
+                ]
+            }
+        ],
+        "arduino8266": [
+            {
+                "name": "Drug01",
+                "intro": "",
+                "num": "0",
+                "giveDrug": [
+                    {"time": "06:00", "dose": "1"}
+                ]
+            },{
+                "name": "Drug02",
+                "intro": "",
+                "num": "0",
+                "giveDrug": [
+                    {"time": "06:00", "dose": "1"}
+                ]
+            },{
+                "name": "Drug03",
+                "intro": "",
+                "num": "0",
+                "giveDrug": [
+                    {"time": "06:00", "dose": "1"}
+                ]
+            },{
+                "name": "Drug04",
+                "intro": "",
+                "num": "0",
+                "giveDrug": [
+                    {"time": "06:00", "dose": "1"}
+                ]
+            },{
+                "name": "Drug05",
+                "intro": "",
+                "num": "0",
+                "giveDrug": [
+                    {"time": "06:00", "dose": "1"}
+                ]
+            },{
+                "name": "Drug06",
+                "intro": "",
+                "num": "0",
+                "giveDrug": [
+                    {"time": "06:00", "dose": "1"}
+                ]
+            }
+        ]
+    },
+    "accounts": {
+        "ddm4534": {
+            "password": "12345678",
+            "connectedDevice": "arduino8266"
+        },
+        "ballywang": {
+            "password": "12345678",
+            "connectedDevice": "arduino8266"
+        }
+    }
+}
