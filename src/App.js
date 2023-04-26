@@ -11,14 +11,12 @@ function App() {
     <div className="APP">
       <h1>SMART PILLBOX</h1>
       <Router>
-      <switch>
         <Routes>
           <Route path="/" element={<LoginPage/>} />
           <Route path='/MainPage' element={<MainPage/>}/>
           <Route path='/AddPill' element={<AddPage/>}/>
           <Route path='/pills/:id' element={<PillDetail/>}/>
         </Routes>
-      </switch>  
       </Router>
     </div>
   );
