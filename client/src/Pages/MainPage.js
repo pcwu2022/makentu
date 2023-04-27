@@ -7,17 +7,39 @@ const MainPage = () =>{
     const location = useLocation();
     const navigate = useNavigate();
 
+    let localArr = [];
+    
+    // [
+    //     {name: 'Aspirin', intro: 'for fever',num: 7, id: 1 },
+    //     {name: 'Prolactin', intro: 'pain relief',num: 7, id: 2 }
+    // ]
+    const [Pills,setPills] = useState([]);
+
     // redirect if username is not present
     useEffect(() => {
         if (location.state === null || location.state.username === null){
-            navigate("/", {state: {username: null}});
+            if (sessionStorage.getItem("username") === null){
+                navigate("/", {state: {username: null}});
+            } else {
+                // update state
+            }
         }
-    });
+        if (localArr.length === 0){
+            // load sessionStorage
+            if (sessionStorage.getItem("data") === null){
+                navigate("/", {state: {username: null, message: "No data in sessionStorage"}});
+            }
+            try {
+                localArr = JSON.parse(sessionStorage.getItem("data"));
+                console.log(localArr);
+                setPills(localArr);
+                console.log(localArr.length);
+            } catch (err) {
+                console.error(err);
+            }
+        }
+    }, []);
 
-    const [Pills,setPills] = useState([
-        {name: 'Aspirin', intro: 'for fever',num: 7, id: 1 },
-        {name: 'Prolactin', intro: 'pain relief',num: 7, id: 2 }
-    ]);
     const Oxygen=99;
     const Heartrate=60;
     const [LowerLimitOxygen,setLowerLimitOxygen] =useState(85);

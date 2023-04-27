@@ -35,28 +35,31 @@ const LoginPage = () =>{
                 password: passwordState
             })
         })
-        .then(data => data.json())
-        .then((data) => {
-            jsonData = data;
-            
-            // data processing
-            if (jsonData.success === false){
-                alert("Message:" + jsonData.message);
-            } else {
-
-            }
-            // go to main page
-            if (jsonData.success === true){
-                navigate("/MainPage", {
-                    state: {
-                        username: usernameState, 
-                        device: jsonData.deviceName, 
-                        data: jsonData.deviceData
-                    }
-                });
-            }
+        .then((data) => {data.json()
+            .then((data) => {
+                jsonData = data;
+                
+                // data processing
+                if (jsonData.success === false){
+                    alert("Message:" + jsonData.message);
+                } else {
+                    
+                }
+                // go to main page
+                if (jsonData.success === true){
+                    sessionStorage.setItem("device", jsonData.deviceName);
+                    sessionStorage.setItem("data", JSON.stringify(jsonData.deviceData))
+                    sessionStorage.setItem("username", usernameState);
+                    navigate("/MainPage", {
+                        state: {
+                            username: usernameState
+                        }
+                    });
+                }
+            })
         })
         .catch((err) => {
+            alert(`Cannot connect to server at ${backHref}`);
             console.error(err);
         });
         

@@ -36,28 +36,29 @@
         "arduino8266": [
             {
                 "name": "Drug01",
-                "intro": "",
-                "num": "0",
+                "intro": "For medical use",
+                "num": "1",
                 "giveDrug": [
                     {"time": "06:00", "dose": "1"}
                 ]
             },{
                 "name": "Drug02",
-                "intro": "",
+                "intro": "Hello world",
                 "num": "0",
                 "giveDrug": [
-                    {"time": "06:00", "dose": "1"}
+                    {"time": "06:00", "dose": "1"},
+                    {"time": "18:00", "dose": "2"}
                 ]
             },{
                 "name": "Drug03",
-                "intro": "",
+                "intro": "Elliptical integrals",
                 "num": "0",
                 "giveDrug": [
                     {"time": "06:00", "dose": "1"}
                 ]
             },{
                 "name": "Drug04",
-                "intro": "",
+                "intro": "DNE",
                 "num": "0",
                 "giveDrug": [
                     {"time": "06:00", "dose": "1"}

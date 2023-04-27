@@ -21,7 +21,7 @@ const AddPill = () => {
     }
 
     useEffect(() => {
-        console.log()
+        
     });
 
     return  (
@@ -61,7 +61,7 @@ const AddPill = () => {
             </form>
             {giveDrug.map((item, index) => {
                 return(
-                    <div class="form-group col-12 col-lg-4"> 
+                    <div className="form-group col-12 col-lg-4"> 
                         <label> Time: </label>
                             <input 
                                 name="time"
