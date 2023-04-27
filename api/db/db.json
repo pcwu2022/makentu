@@ -83,7 +83,7 @@
     "accounts": {
         "ddm4534": {
             "password": "12345678",
-            "connectedDevice": "arduino8266"
+            "connectedDevice": "defaultDevice"
         },
         "ballywang": {
             "password": "12345678",
