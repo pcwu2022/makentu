@@ -67,11 +67,11 @@ const LoginPage = () =>{
     }
     return(
         <div className="Login">
-            <span class="Login_header">LOGIN</span>
+            <span className="Login_header">LOGIN</span>
     
-            <form class="Login_form">
+            <form className="Login_form">
                 <br></br>
-                <label class="input_header" htmlFor="username">Username:</label>
+                <label className="input_header" htmlFor="username">Username:</label>
                 {/* <br></br> */}
                 <input 
                     type="text" 
@@ -80,7 +80,7 @@ const LoginPage = () =>{
                     onChange = {e => setUsernameState(e.target.value)}
                 />
                 <br></br>
-                <label class="input_header" htmlFor="password">Password:</label>
+                <label className="input_header" htmlFor="password">Password:</label>
                 {/* <br></br> */}
                 <input 
                     type="password" 
@@ -89,7 +89,7 @@ const LoginPage = () =>{
                     onChange = {e => setPasswordState(e.target.value)}
                 />
                 <br></br>
-                <button class="btn btn-outline-success" onClick = {handleLogin}> LOGIN </button>
+                <button className="btn btn-outline-success" onClick = {handleLogin}> LOGIN </button>
                 {/* <Link to ="/MainPage">LOGIN</Link> */}
             </form>
         </div>

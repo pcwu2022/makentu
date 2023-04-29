@@ -12,8 +12,8 @@ import 'bootstrap/dist/css/bootstrap.css';
 
 function App() {
   return (
-    <div class="APP">
-      <span class="App_header">SMART PILLBOX</span>
+    <div className="APP">
+      <span className="App_header">SMART PILLBOX</span>
       <Router>
         <Routes>
           <Route path="/" element={<LoginPage/>} />

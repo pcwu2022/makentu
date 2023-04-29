@@ -76,7 +76,7 @@ const MainPage = () =>{
 
     return(
         <div id = "root">   
-            <span class="Main_header">HOME</span>
+            <span className="Main_header">HOME</span>
             <div className="Main">
                 <PillGrid Pills={Pills} handleDelete={handleDelete}/>
             </div>
