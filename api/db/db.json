@@ -41,7 +41,8 @@
                 "num": "1",
                 "giveDrug": [
                     {"time": "06:00", "dose": "1"}
-                ]
+                ],
+                "image": "makentu/api/image/pill-1.jpg"
             },{
                 "have": true,
                 "name": "Drug02",
@@ -50,7 +51,8 @@
                 "giveDrug": [
                     {"time": "06:00", "dose": "1"},
                     {"time": "18:00", "dose": "2"}
-                ]
+                ],
+                "image": "makentu/api/image/pill-2.jpg"
             },{
                 "have": false,
                 "name": "Drug03",
@@ -58,7 +60,8 @@
                 "num": "0",
                 "giveDrug": [
                     {"time": "06:00", "dose": "1"}
-                ]
+                ],
+                "image": ""
             },{
                 "have": false,
                 "name": "",
@@ -66,7 +69,8 @@
                 "num": "0",
                 "giveDrug": [
                     {"time": "06:00", "dose": "1"}
-                ]
+                ],
+                "image": ""
             },{
                 "have": true,
                 "name": "Drug05",
@@ -74,7 +78,8 @@
                 "num": "0",
                 "giveDrug": [
                     {"time": "06:00", "dose": "1"}
-                ]
+                ],
+                "image": ""
             },{
                 "have": false,
                 "name": "",
@@ -82,7 +87,8 @@
                 "num": "0",
                 "giveDrug": [
                     {"time": "06:00", "dose": "1"}
-                ]
+                ],
+                "image": ""
             }
         ]
     },

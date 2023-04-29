@@ -1,0 +1,66 @@
+.Edit_header{
+    background-color: #d4f2d2ff;
+    min-height: 13vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(20px + 3vmin);
+    font-family: serif;
+    color:#3e6259ff;
+}
+  
+.Edit_form{
+    border-bottom: #d4f2d2ff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: calc(5px + 3vmin);
+    color:#3e6259ff;
+    
+}
+
+.Edit_Time{
+    border: solid 2px#3e6259ff;
+    /* border-radius: 5%; */
+    /* border-block-style: revert; */
+    padding-right: 2px;
+    padding: 8px;
+    display: flex;
+    font-size: calc(5px + 3vmin);
+    color: #3e6259ff;
+    margin-left: 200px;
+    margin-right: 200px;
+    margin-top: 3px;
+    margin-bottom: 25px;
+    align-content: space-between;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    flex-wrap: nowrap;
+}
+
+.EditTime_subheader{
+    font: italic 1em "Fira Sans", serif;
+    margin-top: 7px;
+}
+.Edit_subheader{
+    font: italic 1em "Fira Sans", serif;
+}
+
+.EditPhoto{
+    padding:5px;
+    margin-left: 150px;
+}
+
+.EditTime_header{
+    background-color: #d4f2d2ff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(5px + 3vmin);
+    font-family: serif;
+    color:#3e6259ff;
+    border-radius: 50%;
+}

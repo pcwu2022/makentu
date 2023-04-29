@@ -1,0 +1,13 @@
+.PillName{
+    /* font: italic 1em "Fira Sans", serif; */
+    margin-top: 7px;
+    font-size:35px;
+    font-family: Palatino;
+    color: #3e6259ff;
+}
+
+.PillText{
+    /* font: italic 1em "Fira Sans", serif; */
+    /* margin-top: 4px; */
+    font-family: Georgia;
+}

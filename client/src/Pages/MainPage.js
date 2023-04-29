@@ -84,41 +84,45 @@ const MainPage = () =>{
             <div className="Main">
                 <PillGrid Pills={Pills} handleDelete={handleDelete}/>
             </div>
-            
-            <div className="Health">
-                <span className="Main_header">Health Information</span>
-                <div className="Oxygen">
-                    Oxygen : {Oxygen} (mm Hg)
+            <span className="Main_header">Health Information</span>
+            <br></br>
+            <div className="container">  
+                <div className="row">   
+                    <div className="Oxygen col-6">
+                        <span className="HealthSubtitle">Oxygen : {Oxygen} (mm Hg)</span>
+                        <br></br>
+                        <label className="SetLimit"> Lower-limit: </label>
+                            <input 
+                                type="number"
+                                value={LowerLimitOxygen}
+                                onChange={(e)=>setLowerLimitOxygen(e.target.value)}
+                            />
+                    </div>
                     
+                    <div className="Heartrate col-6">
+                        <span className="HealthSubtitle">Heartrate : {Heartrate} (Beat per minute) </span>
+                        <br></br>
+                        <label className="SetLimit"> Lower-limit: </label>
+                            <input 
+                                type="number"
+                                value={LowerLimitHeartrate}
+                                onChange={(e)=>setLowerLimitHeartrate(e.target.value)}
+                            />
+                        <br></br>
+                        <label className="SetLimit"> Upper-limit: </label>
+                            <input 
+                                type="number"
+                                value={UpperLimitHeartrate}
+                                onChange={(e)=>setUpperLimitHeartrate(e.target.value)}
+                            />
+                        <br></br>
+                    </div>
                     <br></br>
-                    <label> Lower-limit: </label>
-                        <input 
-                            type="number"
-                            value={LowerLimitOxygen}
-                            onChange={(e)=>setLowerLimitOxygen(e.target.value)}
-                        />
+                    
                 </div>
-                <br></br>
-                <div className="Heartrate">
-                    Heartrate : {Heartrate} (Beat per minute)
-                    <br></br>
-                    <label> Lower-limit: </label>
-                        <input 
-                            type="number"
-                            value={LowerLimitHeartrate}
-                            onChange={(e)=>setLowerLimitHeartrate(e.target.value)}
-                        />
-                    <br></br>
-                    <label> Upper-limit: </label>
-                        <input 
-                            type="number"
-                            value={UpperLimitHeartrate}
-                            onChange={(e)=>setUpperLimitHeartrate(e.target.value)}
-                        />
-                    <br></br>
-                </div>
-                <br></br>
             </div>
+            <br></br>
+            <br></br>
         </div>
     );
 }

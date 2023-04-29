@@ -11,9 +11,34 @@
 }
 
 .Oxygen{
-
+    border: solid 2px #3e6259ff;
+    padding: 15px;
+    
+    /* padding: 5px;
+    margin: 5px;
+    size: 50px,80px; */
 }
 
 .Heartrate{
-    
+    border: solid 2px #3e6259ff;
+    padding: 15px;
+    /* padding-left: 5px;
+    margin: 10px; */
+}
+
+.HealthSubtitle{
+    text-align:center;
+    /* margin-left: 30%; */
+    background-color: #3e6259ff;
+    padding: 8px;
+    border-radius: 10px;
+    margin-top: 5px;
+    font-size:25px;
+    position: relative;
+    font-family: Palatino;
+    color: white
+}
+
+.SetLimit{
+    margin-top: 25px;
 }

@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from "react-router-dom"; 
+import './AddPage.css';
 
 const AddPill = () => {
     const location = useLocation();
@@ -7,28 +8,37 @@ const AddPill = () => {
     const [name,setName] = useState('');
     const [intro,setIntro] = useState('');
     const [num,setNum] =useState(0);
-    // const [time,setTime] =useState();
-    // const [dose,setDose] =useState(0);
-    const [giveDrug,setGiveDrug] = useState([{time: '', dose: ''}]);
+    const [giveDrug,setGiveDrug] = useState([{time: '', dose: '',id:''}]);
+    const [image,setImage] = useState('');
     const handleInput = (e,index) =>{
         const newgiveDrug = [...giveDrug];
         newgiveDrug [index][e.target.name] = e.target.value;
+        newgiveDrug [index][e.target.id] = index;
         setGiveDrug(newgiveDrug);
     }
-    const AddGiveDrug = (e) =>{
-        //const newgiveDrug = [...giveDrug];
-        setGiveDrug([...giveDrug,{time: '', dose: ''}]);
-    }
 
-    useEffect(() => {
+    const AddGiveDrug = (e) =>{
+        let num = giveDrug.length;
+        setGiveDrug([...giveDrug,{time: '', dose: '',id:num}]);
+    }
+     const DeleteGiveDrug = (e, idx) =>{
+         const newGiveDrug = giveDrug.filter((_,id)=>id != idx);;
+         setGiveDrug(newGiveDrug);
+     }
+
+    // useEffect(() => {
         
-    });
+    // });
+    const onSubmit = () => {
+        
+    };
 
     return  (
         <div className="AddPill">
-            <h2> ADD A NEW DRUG </h2>
-            <form>
-                <label> Drug Name: </label>
+            <span className="Add_header">ADD A NEW DRUG</span>
+            <br></br>
+            <form className='Add_form'>
+                <label className="Add_subheader"> Drug Name: </label>
                     <input 
                         type="text"
                         required
@@ -36,7 +46,7 @@ const AddPill = () => {
                         onChange={(e)=>setName(e.target.value)}
                     />
                 <br></br>
-                <label> Drug Description: </label>
+                <label className="Add_subheader"> Drug Description: </label>
                     <textarea 
                         type="text"
                         required
@@ -44,13 +54,15 @@ const AddPill = () => {
                         onChange={(e)=>setIntro(e.target.value)}
                     ></textarea>
                 <br></br>
-
-                <label>Pill Photo: </label>
+                <label className="Add_subheader">Pill Photo: </label>
+                <input type="file"
+                    // value={image}
+                    // onClick={setImage()}
+                    required 
+                    className="Photo" />
                 <br></br>
-                <input type="file" id="myfile" name="myfile" />
-                <br></br>
 
-                <label> Drug Remaining Number: </label>
+                <label className="Add_subheader"> Drug Remaining Number: </label>
                     <input 
                         type="number"
                         required
@@ -60,9 +72,12 @@ const AddPill = () => {
                 <br></br>
             </form>
             {giveDrug.map((item, index) => {
+                console.log("index:",index)
                 return(
-                    <div className="form-group col-12 col-lg-4"> 
-                        <label> Time: </label>
+                    <div className="Add_Time"> 
+
+                        <span className="AddTime_header">&nbsp;&nbsp;Taking Time: &nbsp; </span>
+                        <label className="AddTime_subheader"> &nbsp;&nbsp;&nbsp;Time:&nbsp; </label>
                             <input 
                                 name="time"
                                 type="time"
@@ -72,7 +87,7 @@ const AddPill = () => {
                                 max="24:00"
                                 onChange={(e) =>handleInput(e,index)}
                             />
-                        <label> Dose: </label>  
+                        <label className="AddTime_subheader"> &nbsp; &nbsp; Dose:&nbsp; </label>  
                             <input 
                                 name="dose"
                                 type="number"
@@ -80,14 +95,25 @@ const AddPill = () => {
                                 min="1"
                                 value={item.dose}
                                 onChange={(e) =>handleInput(e,index)}
-                            />  
+                            /> 
+                        <p>&nbsp; &nbsp;&nbsp; &nbsp;</p>
+                        <button 
+                            className="btn btn-outline-danger " 
+                            id={item.id}
+                            onClick={(e) =>DeleteGiveDrug(e, index)}
+                        >
+                         X </button>
+                         
                     </div>
                 )
             })}
             <br></br>
-            <button onClick={AddGiveDrug}> ADD TIME </button>
-            <br></br>
-            <button > SAVE </button>
+            <div className="d-grid gap-2 col-3 mx-auto">
+                <button className="btn btn-outline-success " onClick={AddGiveDrug}> ADD TIME </button>
+                <button className="btn btn-outline-dark" onClick={onSubmit}> SAVE </button>
+                <br></br>
+                <br></br>
+            </div>
         </div>
     );
 }

@@ -11,20 +11,21 @@ const PillGrid = ({Pills,title,handleDelete}) => {
             <div>
                 {Pills.length!==0 && Pills.map((pill)=>{
                     if (pill.have == true){
-                        console.log(pill);
+                        console.log("pill.image",pill.image);
                         return (
                             <div key={pill.id} className='border border-dark p-2 m-2 d-flex justify-content-between'> 
                                 <div>
-                                    <h3>{pill.name}</h3>
-                                    <h4>{pill.intro.split('\n').map(subintro=>( 
+                                    <h3 className="PillName">{pill.name}</h3>
+                                    <h4 className="PillText">{pill.intro.split('\n').map(subintro=>( 
                                         <span key={subintro}>{subintro}<br/></span>
                                     ))}</h4>
-                                    <h4>Remaining Numbers: {pill.num}</h4>
-                                    <h4>Taking time:
+                                    <h4 className="PillText">Remaining Numbers: {pill.num}</h4>
+                                    <h4 className="PillText">Taking time:
                                         {pill.giveDrug.map((subgiveDrug)=>(
                                             <h5>{subgiveDrug.time} : take {subgiveDrug.dose} pill(s)</h5>
                                         ))}
                                     </h4>
+                                    <img src="image/pill2.jpg" alt="PLEASE LOAD IMAGE"></img>
                                 </div>
 
                                 <div>
@@ -36,7 +37,11 @@ const PillGrid = ({Pills,title,handleDelete}) => {
                     }
                     else if (pill.have == false){
                         return(
-                            <Link to ="/AddPill" className='btn btn-outline-success d-flex justify-content-center'>ADD</Link>
+                            <div>
+                                <br></br>
+                                <Link to ="/AddPill" className='btn btn-outline-success d-flex justify-content-center'>ADD</Link>
+                                <br></br>
+                            </div>
                         )
                     }
                 })}

@@ -1,5 +1,5 @@
 import { useHistory,useParams } from "react-router-dom";
-
+import './PillGrid.css';
 
 const PillDetail = () => {
     const {id} =useParams();
