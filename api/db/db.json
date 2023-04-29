@@ -35,13 +35,15 @@
         ],
         "arduino8266": [
             {
+                "have": true,
                 "name": "Drug01",
-                "intro": "For medical use",
+                "intro": "It's for fever.\n Don't take too much.",
                 "num": "1",
                 "giveDrug": [
                     {"time": "06:00", "dose": "1"}
                 ]
             },{
+                "have": true,
                 "name": "Drug02",
                 "intro": "Hello world",
                 "num": "0",
@@ -50,6 +52,7 @@
                     {"time": "18:00", "dose": "2"}
                 ]
             },{
+                "have": false,
                 "name": "Drug03",
                 "intro": "Elliptical integrals",
                 "num": "0",
@@ -57,13 +60,15 @@
                     {"time": "06:00", "dose": "1"}
                 ]
             },{
-                "name": "Drug04",
+                "have": false,
+                "name": "",
                 "intro": "DNE",
                 "num": "0",
                 "giveDrug": [
                     {"time": "06:00", "dose": "1"}
                 ]
             },{
+                "have": true,
                 "name": "Drug05",
                 "intro": "",
                 "num": "0",
@@ -71,7 +76,8 @@
                     {"time": "06:00", "dose": "1"}
                 ]
             },{
-                "name": "Drug06",
+                "have": false,
+                "name": "",
                 "intro": "",
                 "num": "0",
                 "giveDrug": [

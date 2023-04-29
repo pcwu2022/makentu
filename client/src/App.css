@@ -1,6 +1,6 @@
 .App {
   text-align: center;
-}
+}/* 
 
 .App-logo {
   height: 40vmin;
@@ -35,4 +35,16 @@
   to {
     transform: rotate(360deg);
   }
+} */
+
+.App_header{
+  background-color: #3e6259ff;
+  min-height: 25vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(30px + 3vmin);
+  font-family: serif;
+  color: white;
 }

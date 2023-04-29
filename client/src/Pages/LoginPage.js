@@ -1,6 +1,6 @@
 import { React, useState, useEffect } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-
+import './Login.css';
 // backend href
 const backHref = "http://localhost:3001/";
 
@@ -67,13 +67,12 @@ const LoginPage = () =>{
     }
     return(
         <div className="Login">
-            <h1>Login</h1>
-            {/* <UsernameInput />
-            <PasswordInput />
-            <SubmitLoginButton /> */}
-            <form>
-                <label htmlFor="username">Username:</label>
+            <span class="Login_header">LOGIN</span>
+    
+            <form class="Login_form">
                 <br></br>
+                <label class="input_header" htmlFor="username">Username:</label>
+                {/* <br></br> */}
                 <input 
                     type="text" 
                     id="username" 
@@ -81,8 +80,8 @@ const LoginPage = () =>{
                     onChange = {e => setUsernameState(e.target.value)}
                 />
                 <br></br>
-                <label htmlFor="password">Password:</label>
-                <br></br>
+                <label class="input_header" htmlFor="password">Password:</label>
+                {/* <br></br> */}
                 <input 
                     type="password" 
                     id="password" 
@@ -90,7 +89,7 @@ const LoginPage = () =>{
                     onChange = {e => setPasswordState(e.target.value)}
                 />
                 <br></br>
-                <button onClick = {handleLogin}> LOGIN </button>
+                <button class="btn btn-outline-success" onClick = {handleLogin}> LOGIN </button>
                 {/* <Link to ="/MainPage">LOGIN</Link> */}
             </form>
         </div>

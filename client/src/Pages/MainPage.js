@@ -1,6 +1,7 @@
 import { React, useState, useEffect } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import PillGrid from './components/PillGrid';
+import './MainPage.css';
 
 const MainPage = () =>{
     // get username from location
@@ -45,7 +46,8 @@ const MainPage = () =>{
     const [LowerLimitOxygen,setLowerLimitOxygen] =useState(85);
     const [LowerLimitHeartrate,setLowerLimitHeartrate] =useState(50);
     const [UpperLimitHeartrate,setUpperLimitHeartrate] =useState(120);
-    const handleDelete = (id) =>{
+    const handleDelete = async (id) =>{
+        // await
         const newPills = Pills.filter(pill => pill.id !== id);
         setPills(newPills);
     }
@@ -70,50 +72,48 @@ const MainPage = () =>{
         alertEvent3();
     }
     
+
+
     return(
         <div id = "root">   
-            <h1> Home </h1>
+            <span class="Main_header">HOME</span>
             <div className="Main">
-                <PillGrid Pills={Pills} title="All" handleDelete={handleDelete}/>
+                <PillGrid Pills={Pills} handleDelete={handleDelete}/>
             </div>
-            <br></br>
-            <Link to ="/AddPill">ADD</Link>
+            
             <div className="Health">
-                <h1> Health Information </h1>
-                Oxygen : {Oxygen} (mm Hg)
+                <span className="Main_header">Health Information</span>
+                <div className="Oxygen">
+                    Oxygen : {Oxygen} (mm Hg)
+                    
+                    <br></br>
+                    <label> Lower-limit: </label>
+                        <input 
+                            type="number"
+                            value={LowerLimitOxygen}
+                            onChange={(e)=>setLowerLimitOxygen(e.target.value)}
+                        />
+                </div>
                 <br></br>
-                Lower-limit : {LowerLimitOxygen} (mm Hg)
+                <div className="Heartrate">
+                    Heartrate : {Heartrate} (Beat per minute)
+                    <br></br>
+                    <label> Lower-limit: </label>
+                        <input 
+                            type="number"
+                            value={LowerLimitHeartrate}
+                            onChange={(e)=>setLowerLimitHeartrate(e.target.value)}
+                        />
+                    <br></br>
+                    <label> Upper-limit: </label>
+                        <input 
+                            type="number"
+                            value={UpperLimitHeartrate}
+                            onChange={(e)=>setUpperLimitHeartrate(e.target.value)}
+                        />
+                    <br></br>
+                </div>
                 <br></br>
-                <label> SET: </label>
-                    <input 
-                        type="number"
-                        value={LowerLimitOxygen}
-                        onChange={(e)=>setLowerLimitOxygen(e.target.value)}
-                    />
-                <br></br>
-
-                Heartrate : {Heartrate} (Beat per minute)
-                <br></br>
-                Lower-limit : {LowerLimitHeartrate} (Beat per minute)
-                <br></br>
-                <label> SET: </label>
-                    <input 
-                        type="number"
-                        value={LowerLimitHeartrate}
-                        onChange={(e)=>setLowerLimitHeartrate(e.target.value)}
-                    />
-                <br></br>
-                Upper-limit : {UpperLimitHeartrate} (Beat per minute)
-                <br></br>
-                <label> SET: </label>
-                    <input 
-                        type="number"
-                        value={UpperLimitHeartrate}
-                        onChange={(e)=>setUpperLimitHeartrate(e.target.value)}
-                    />
-                <br></br>
-                
-                
             </div>
         </div>
     );

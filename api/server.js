@@ -27,3 +27,7 @@ app.post('*', (req, res) => {
 app.listen(PORT, () => {
     console.log(`Listening on port ${PORT}`);
 });
+
+// import activitiesRouter from "./routes/activity.js"//前端在call時所需要的前綴
+
+// app.use("/activities", activitiesRouter);
