@@ -28,7 +28,7 @@ const PillGrid = ({Pills,title,handleDelete}) => {
                                 </div>
 
                                 <div>
-                                    <Link to={'/pills/:'+pill._id} className='btn btn-outline-success d-flex justify-content-center'>Edit</Link>
+                                    <Link to={'/EditPill/'+pill.id} className='btn btn-outline-success d-flex justify-content-center'>Edit</Link>
                                     <button onClick={()=>handleDelete(pill.id)} className='btn btn-outline-danger mt-3'>Delete</button>
                                 </div>
                             </div>
