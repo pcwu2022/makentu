@@ -39,7 +39,7 @@ const PillGrid = ({Pills,title,handleDelete}) => {
                         return(
                             <div key={pill.id}>
                                 <br></br>
-                                <Link to ="/AddPill" className='btn btn-outline-success d-flex justify-content-center'>ADD</Link>
+                                <Link to={'/EditPill/'+pill.id} className='btn btn-outline-success d-flex justify-content-center'>ADD</Link>
                                 <br></br>
                             </div>
                         )

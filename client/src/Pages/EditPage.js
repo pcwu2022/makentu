@@ -50,7 +50,7 @@ const EditPill=()=>{
 
     const AddGiveDrug = (e) =>{
         let num = giveDrug.length;
-        setGiveDrug([...giveDrug,{time: '', dose: '',id:num}]);
+        setGiveDrug([...giveDrug,{time: '06:00', dose: 0,id:num}]);
     }
      const DeleteGiveDrug = (e, idx) =>{
          const newGiveDrug = giveDrug.filter((_,id)=>id != idx);;
@@ -140,6 +140,7 @@ const EditPill=()=>{
                                 name="time"
                                 type="time"
                                 required
+                                //! default time
                                 value={item.time}
                                 min="00:00" 
                                 max="24:00"

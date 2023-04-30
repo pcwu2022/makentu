@@ -2,36 +2,42 @@
     "devices": {
         "defaultDevice": [
             {
+                "id": "0",
                 "have": true,
                 "name": "Drug01",
                 "intro": "",
                 "num": "0",
                 "giveDrug": []
             },{
+                "id": "1",
                 "have": true,
                 "name": "Drug02",
                 "intro": "",
                 "num": "0",
                 "giveDrug": []
             },{
+                "id": "2",
                 "have": true,
                 "name": "Drug03",
                 "intro": "",
                 "num": "0",
                 "giveDrug": []
             },{
+                "id": "3",
                 "have": true,
                 "name": "Drug04",
                 "intro": "",
                 "num": "0",
                 "giveDrug": []
             },{
+                "id": "4",
                 "have": true,
                 "name": "Drug05",
                 "intro": "",
                 "num": "0",
                 "giveDrug": []
             },{
+                "id": "5",
                 "have": true,
                 "name": "Drug06",
                 "intro": "",
@@ -41,6 +47,7 @@
         ],
         "arduino8266": [
             {
+                "id": "0",
                 "have": true,
                 "name": "Drug01",
                 "intro": "It's for fever.\n Don't take too much.",
@@ -50,6 +57,7 @@
                 ],
                 "image": "makentu/api/image/pill-1.jpg"
             },{
+                "id": "1",
                 "have": true,
                 "name": "Drug02",
                 "intro": "Hello world",
@@ -60,6 +68,7 @@
                 ],
                 "image": "makentu/api/image/pill-2.jpg"
             },{
+                "id": "2",
                 "have": true,
                 "name": "Drug03",
                 "intro": "Elliptical integrals",
@@ -69,8 +78,9 @@
                 ],
                 "image": ""
             },{
+                "id": "3",
                 "have": true,
-                "name": "",
+                "name": "HHH",
                 "intro": "DNE",
                 "num": "0",
                 "giveDrug": [
@@ -78,6 +88,7 @@
                 ],
                 "image": ""
             },{
+                "id": "4",
                 "have": true,
                 "name": "Drug05",
                 "intro": "",
@@ -87,9 +98,10 @@
                 ],
                 "image": ""
             },{
+                "id": "5",
                 "have": true,
-                "name": "",
-                "intro": "",
+                "name": "Yaa",
+                "intro": "Cool",
                 "num": "0",
                 "giveDrug": [
                     {"time": "06:00", "dose": "1"}
