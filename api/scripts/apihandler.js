@@ -44,6 +44,21 @@ const handleLogin = (rawData, username, password) => {
     return sendObj;
 }
 
+// modify
+const modifyDrug = async (rawData, deviceName, deviceData) => {
+    let sendObj = {};
+    rawData.devices[deviceName] = deviceData;
+    try{
+        console.log(JSON.stringify(rawData, null, 4));
+        //await loadjson.saveData(rawData);
+        sendObj = {success: true};
+    } catch (err) {
+        console.error(err);
+        sendObj = {success: false};
+    }
+    return sendObj;
+}
+
 
 const getData = async (req, res) => {
     let rawData = await loadjson.getData();
@@ -65,8 +80,8 @@ const postData = async (req, res) => {
 
     if (action === "login"){
         sendObj = handleLogin(rawData, req.body.username, req.body.password); //!
-    } else if (action === "drug"){
-
+    } else if (action === "modify"){
+        sendObj = await modifyDrug(rawData, req.body.deviceName, req.body.deviceData);
     } else {
 
     }

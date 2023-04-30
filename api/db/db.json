@@ -2,31 +2,37 @@
     "devices": {
         "defaultDevice": [
             {
+                "have": true,
                 "name": "Drug01",
                 "intro": "",
                 "num": "0",
                 "giveDrug": []
             },{
+                "have": true,
                 "name": "Drug02",
                 "intro": "",
                 "num": "0",
                 "giveDrug": []
             },{
+                "have": true,
                 "name": "Drug03",
                 "intro": "",
                 "num": "0",
                 "giveDrug": []
             },{
+                "have": true,
                 "name": "Drug04",
                 "intro": "",
                 "num": "0",
                 "giveDrug": []
             },{
+                "have": true,
                 "name": "Drug05",
                 "intro": "",
                 "num": "0",
                 "giveDrug": []
             },{
+                "have": true,
                 "name": "Drug06",
                 "intro": "",
                 "num": "0",

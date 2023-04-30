@@ -51,9 +51,36 @@ const MainPage = () =>{
     const [UpperLimitHeartrate,setUpperLimitHeartrate] =useState(120);
     const handleDelete = async (id) =>{
         // await
-        const newPills = Pills.filter(pill => pill.id !== id);
-        console.log(newPills);
+        // const newPills = Pills.filter(pill => pill.id !== id);
+        // console.log(newPills);
+        // setPills(newPills);
+
+        // modify state Pills
+        const newPills = [...Pills]
+        newPills[id] = {
+            have: false,
+            name: "",
+            intro: "",
+            num: "",
+            giveDrug: [],
+            image: "" //! default
+        };
+        // render again
+        // with callback
         setPills(newPills);
+
+        // load into sessionStorage
+        sessionStorage.setItem("data", JSON.stringify(newPills));
+        // send back to server
+        fetch(sessionStorage.getItem("backHref") + "postdata/modify", {
+            method: "POST",
+            mode: "cors",
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify({
+                deviceName: sessionStorage.getItem("device"),
+                deviceData: newPills
+            })
+        });
     }
 
     function alertEvent1() {
