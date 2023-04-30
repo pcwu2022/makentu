@@ -23,6 +23,7 @@ const MainPage = () =>{
                 navigate("/", {state: {username: null}});
             } else {
                 // update state
+                location.state.username = sessionStorage.getItem("username");
             }
         }
         if (localArr.length === 0){
@@ -80,6 +81,12 @@ const MainPage = () =>{
                 deviceName: sessionStorage.getItem("device"),
                 deviceData: newPills
             })
+        })
+        .then(data => data.json())
+        .then((data) => {
+            if (data.success !== true){
+                console.log("Failed to send.");
+            }
         });
     }
 

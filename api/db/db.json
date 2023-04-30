@@ -60,7 +60,7 @@
                 ],
                 "image": "makentu/api/image/pill-2.jpg"
             },{
-                "have": false,
+                "have": true,
                 "name": "Drug03",
                 "intro": "Elliptical integrals",
                 "num": "0",
@@ -69,7 +69,7 @@
                 ],
                 "image": ""
             },{
-                "have": false,
+                "have": true,
                 "name": "",
                 "intro": "DNE",
                 "num": "0",
@@ -87,7 +87,7 @@
                 ],
                 "image": ""
             },{
-                "have": false,
+                "have": true,
                 "name": "",
                 "intro": "",
                 "num": "0",

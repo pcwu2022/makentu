@@ -57,7 +57,7 @@ const EditPill=()=>{
          setGiveDrug(newGiveDrug);
      }
      const onSubmit = () => {
-        
+        navigate("/MainPage", {state: {username: sessionStorage.getItem("username")}})
      };
 
     return  (
