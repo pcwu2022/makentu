@@ -33,12 +33,12 @@ const MainPage = () =>{
             }
             try {
                 localArr = JSON.parse(sessionStorage.getItem("data"));
-                console.log(localArr);
+                //console.log(localArr);
                 for(let i = 0; i < localArr.length; i++){
                     localArr[i].id = i + "";
                 }
                 setPills(localArr);
-                console.log(localArr.length);
+                //console.log(localArr.length);
             } catch (err) {
                 console.error(err);
             }

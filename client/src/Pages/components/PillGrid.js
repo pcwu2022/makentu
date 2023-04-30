@@ -5,13 +5,13 @@ const PillGrid = ({Pills,title,handleDelete}) => {
     const location = useLocation();
     const navigate = useNavigate();
 
-    console.log(Pills);
+    //console.log(Pills);
     return (
         <div className="PillGrid">
             <div>
                 {Pills.length!==0 && Pills.map((pill)=>{
                     if (pill.have == true){
-                        console.log("pill.image",pill.image);
+                        //console.log("pill.image",pill.image);
                         return (
                             <div key={pill.id} className='border border-dark p-2 m-2 d-flex justify-content-between'> 
                                 <div>
@@ -22,7 +22,7 @@ const PillGrid = ({Pills,title,handleDelete}) => {
                                     <h4 className="PillText">Remaining Numbers: {pill.num}</h4>
                                     <h4 className="PillText">Taking time:
                                         {pill.giveDrug.map((subgiveDrug)=>(
-                                            <h5>{subgiveDrug.time} : take {subgiveDrug.dose} pill(s)</h5>
+                                            <div key={Math.random() + ""}>{subgiveDrug.time} : take {subgiveDrug.dose} pill(s)</div>
                                         ))}
                                     </h4>
                                     <img src="image/pill2.jpg" alt="PLEASE LOAD IMAGE"></img>
@@ -37,7 +37,7 @@ const PillGrid = ({Pills,title,handleDelete}) => {
                     }
                     else if (pill.have == false){
                         return(
-                            <div>
+                            <div key={pill.id}>
                                 <br></br>
                                 <Link to ="/AddPill" className='btn btn-outline-success d-flex justify-content-center'>ADD</Link>
                                 <br></br>

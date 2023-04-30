@@ -31,7 +31,7 @@ const EditPill=()=>{
         }
         try {
             let elData = JSON.parse(sessionStorage.getItem("data"))[id];
-            console.log(elData);
+            //console.log(elData);
             setName(elData.name);
             setIntro(elData.intro);
             setNum(elData.num);
@@ -57,7 +57,38 @@ const EditPill=()=>{
          setGiveDrug(newGiveDrug);
      }
      const onSubmit = () => {
-        navigate("/MainPage", {state: {username: sessionStorage.getItem("username")}})
+        try {
+            let localArr = JSON.parse(sessionStorage.getItem("data"));
+            localArr[id] = { //! modify 
+                have: true,
+                name: name,
+                intro: intro,
+                num: num,
+                giveDrug: giveDrug,
+                image: "" //! default
+            };
+            sessionStorage.setItem("data", JSON.stringify(localArr));
+            fetch(sessionStorage.getItem("backHref") + "postdata/modify", {
+                method: "POST",
+                mode: "cors",
+                headers: {"Content-Type": "application/json"},
+                body: JSON.stringify({
+                    deviceName: sessionStorage.getItem("device"),
+                    deviceData: localArr
+                })
+            })
+            .then(data => data.json())
+            .then((data) => {
+                if (data.success !== true){
+                    console.log("Failed to send.");
+                }
+            });
+            navigate("/MainPage", {state: {username: sessionStorage.getItem("username")}})
+        } catch (err) {
+            console.error(err);
+            alert("Cannot save.");
+        }
+        
      };
 
     return  (
@@ -70,7 +101,7 @@ const EditPill=()=>{
                         type="text"
                         required
                         value={name}
-                        onChange={(e)=>setName([...name,e.target.value])}
+                        onChange={(e)=>setName([e.target.value])}
                     />
                 <br></br>
                 <label className="Edit_subheader"> Drug Description: </label>
@@ -78,7 +109,7 @@ const EditPill=()=>{
                         type="text"
                         required
                         value={intro}
-                        onChange={(e)=>setIntro([...intro,e.target.value])}
+                        onChange={(e)=>setIntro([e.target.value])}
                     ></textarea>
                 <br></br>
                 <label 
@@ -94,14 +125,14 @@ const EditPill=()=>{
                         type="number"
                         required
                         value={num}
-                        onChange={(e)=>setNum([...num,e.target.value])}
+                        onChange={(e)=>setNum([e.target.value])}
                     />
                 <br></br>
             </form>
             {giveDrug.map((item, index) => {
                 //console.log("index:",index)
                 return(
-                    <div className="Edit_Time"> 
+                    <div className="Edit_Time" key = {index}> 
 
                         <span className="EditTime_header">&nbsp;&nbsp;Taking Time: &nbsp; </span>
                         <label className="EditTime_subheader"> &nbsp;&nbsp;&nbsp;Time:&nbsp; </label>
