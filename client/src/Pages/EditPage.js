@@ -66,7 +66,7 @@ const EditPill=()=>{
                 intro: intro,
                 num: num,
                 giveDrug: giveDrug,
-                image: "" //! default
+                image: "https://www.webpagescreenshot.info/image-url/1gk2ouU96" //! default
             };
             sessionStorage.setItem("data", JSON.stringify(localArr));
             fetch(sessionStorage.getItem("backHref") + "postdata/modify", {
