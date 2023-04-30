@@ -14,6 +14,8 @@ app.use(cors());
 
 app.get('/getdata/:action', apihandler.getData);
 
+app.get('/image/:action', apihandler.getImage);
+
 app.post('/postdata/:action', apihandler.postData);
 
 app.get('*', (req, res) => {

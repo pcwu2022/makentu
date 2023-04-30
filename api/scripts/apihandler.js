@@ -88,4 +88,8 @@ const postData = async (req, res) => {
     res.send(sendObj);
 }
 
-export default {getData, postData};
+const getImage = async () => {
+    
+}
+
+export default {getData, postData, getImage};
