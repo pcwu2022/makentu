@@ -3,12 +3,15 @@ import { useParams } from 'react-router'
 import { useNavigate, useLocation } from 'react-router-dom'
 import './EditPage.css';
 
+
+
 const EditPill=()=>{
     const location = useLocation();
-    console.log(location.id);
+    const navigate = useNavigate();
+    const params = useParams();
 
     const [act, setAct] = useState({});
-    const id=useParams().id;
+    const id = params.id;
     const [name,setName] = useState('');
     const [intro,setIntro] = useState('');
     const [num,setNum] =useState(0);
@@ -19,6 +22,24 @@ const EditPill=()=>{
     //       setAct(res.data[0]);
     //     }).catch(err=>console.log("error in getAct",err))
     // }
+
+    // load data on start
+    useEffect(() => {
+        // load sessionStorage
+        if (sessionStorage.getItem("data") === null){
+            navigate("/", {state: {username: null, message: "No data in sessionStorage"}});
+        }
+        try {
+            let elData = JSON.parse(sessionStorage.getItem("data"))[id];
+            console.log(elData);
+            setName(elData.name);
+            setIntro(elData.intro);
+            setNum(elData.num);
+            setGiveDrug(elData.giveDrug);
+        } catch (err) {
+            console.error(err);
+        }
+    }, [])
 
     const handleInput = (e,index) =>{
         const newgiveDrug = [...giveDrug];
@@ -78,7 +99,7 @@ const EditPill=()=>{
                 <br></br>
             </form>
             {giveDrug.map((item, index) => {
-                console.log("index:",index)
+                //console.log("index:",index)
                 return(
                     <div className="Edit_Time"> 
 
