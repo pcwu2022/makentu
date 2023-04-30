@@ -49,7 +49,7 @@ const modifyDrug = async (rawData, deviceName, deviceData) => {
     let sendObj = {};
     rawData.devices[deviceName] = deviceData;
     try{
-        //console.log(JSON.stringify(rawData, null, 4));
+        //devicconsole.log(JSON.stringify(rawData, null, 4));
         await loadjson.saveData(rawData);
         sendObj = {success: true};
     } catch (err) {
@@ -66,7 +66,7 @@ const getData = async (req, res) => {
     let sendObj = {};
 
     if (action === "drug"){
-        sendObj = getDrug(rawData, req.body.device); //!
+        sendObj = getDrug(rawData, req.query.device); //!
     } else {
 
     }

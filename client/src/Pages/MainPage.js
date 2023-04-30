@@ -40,6 +40,33 @@ const MainPage = () =>{
                 console.error(err);
             }
         }
+        fetch(sessionStorage.getItem("backHref")+ "getdata/drug?device=" + sessionStorage.getItem("device"), {
+            method: "GET",
+            mode: "cors",
+            headers: {
+                "Content-Type": "application/json"
+            }
+        })
+        .then((data) => {data.json()
+            .then((data) => {
+                let jsonData = data;
+                
+                // data processing
+                if (jsonData.success === false){
+                    alert("Message:" + jsonData.message);
+                } else {
+                    
+                }
+                if (jsonData.success === true){
+                    sessionStorage.setItem("device", jsonData.deviceName);
+                    sessionStorage.setItem("data", JSON.stringify(jsonData.deviceData))
+                }
+            })
+        })
+        .catch((err) => {
+            alert(`Cannot connect to server at ${sessionStorage.getItem("backHref")}`);
+            console.error(err);
+        });
     }, []);
 
     const Oxygen=99;
