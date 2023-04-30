@@ -6,7 +6,7 @@ const saveData = (dataJson) => {
     return new Promise((resolve, reject) => {
         let dataText = "";
         try {
-            dataText = JSON.stringify(dataJson);
+            dataText = JSON.stringify(dataJson, null, 4);
         } catch (err) {
             console.error(err);
             reject(err);
