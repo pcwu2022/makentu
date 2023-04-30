@@ -60,6 +60,7 @@ const EditPill=()=>{
         try {
             let localArr = JSON.parse(sessionStorage.getItem("data"));
             localArr[id] = { //! modify 
+                id: id + "",
                 have: true,
                 name: name,
                 intro: intro,
@@ -101,7 +102,7 @@ const EditPill=()=>{
                         type="text"
                         required
                         value={name}
-                        onChange={(e)=>setName([e.target.value])}
+                        onChange={(e)=>setName(e.target.value)}
                     />
                 <br></br>
                 <label className="Edit_subheader"> Drug Description: </label>
@@ -109,7 +110,7 @@ const EditPill=()=>{
                         type="text"
                         required
                         value={intro}
-                        onChange={(e)=>setIntro([e.target.value])}
+                        onChange={(e)=>setIntro(e.target.value)}
                     ></textarea>
                 <br></br>
                 <label 
@@ -125,7 +126,7 @@ const EditPill=()=>{
                         type="number"
                         required
                         value={num}
-                        onChange={(e)=>setNum([e.target.value])}
+                        onChange={(e)=>setNum(e.target.value)}
                     />
                 <br></br>
             </form>

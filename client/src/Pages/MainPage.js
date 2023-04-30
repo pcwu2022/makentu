@@ -56,10 +56,11 @@ const MainPage = () =>{
         // modify state Pills
         const newPills = [...Pills]
         newPills[id] = {
+            id: id + "",
             have: false,
             name: "",
             intro: "",
-            num: "",
+            num: "0",
             giveDrug: [],
             image: "" //! default
         };

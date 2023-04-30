@@ -49,8 +49,8 @@ const modifyDrug = async (rawData, deviceName, deviceData) => {
     let sendObj = {};
     rawData.devices[deviceName] = deviceData;
     try{
-        console.log(JSON.stringify(rawData, null, 4));
-        //await loadjson.saveData(rawData);
+        //console.log(JSON.stringify(rawData, null, 4));
+        await loadjson.saveData(rawData);
         sendObj = {success: true};
     } catch (err) {
         console.error(err);
