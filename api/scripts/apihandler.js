@@ -1,4 +1,9 @@
 import loadjson from './loadjson.js';
+import fs from 'fs';
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url))
 
 // get drug
 const getDrug = (rawData, device) => {
@@ -88,8 +93,15 @@ const postData = async (req, res) => {
     res.send(sendObj);
 }
 
-const getImage = async () => {
-    
+const getImage = async (req, res) => {
+    fs.readFile('../api/' + req.path, (err, data) => {
+        if (err){
+            console.log(err); //!
+        } else {
+            //res.sendFile(import.meta.url.substring(0, import.meta.url.indexOf("/scripts")) + req.path);
+            res.sendFile(path.join(__dirname, '../' , req.path));
+        }
+    });
 }
 
 export default {getData, postData, getImage};
