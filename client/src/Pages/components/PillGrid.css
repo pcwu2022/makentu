@@ -11,3 +11,10 @@
     /* margin-top: 4px; */
     font-family: Georgia;
 }
+
+.PillGrid{
+    border:  solid 2px  #3e6259ff;
+    padding: 2px;
+    margin: 20px;
+    /* border-dark p-2 m-2 d-flex justify-content-between */
+}

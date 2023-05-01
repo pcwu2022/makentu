@@ -130,7 +130,7 @@
                 "id": "4",
                 "have": true,
                 "name": "Drug05",
-                "intro": "",
+                "intro": "發燒 、 headache",
                 "num": "0",
                 "giveDrug": [
                     {
@@ -138,7 +138,7 @@
                         "dose": "1"
                     }
                 ],
-                "image": "image/default.jpg"
+                "image": "undefined"
             },
             {
                 "id": "5",

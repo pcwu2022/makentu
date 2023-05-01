@@ -13,7 +13,7 @@ const PillGrid = ({Pills,title,handleDelete}) => {
                     if (pill.have == true){
                         //console.log("pill.image",pill.image);
                         return (
-                            <div key={pill.id} className='border border-dark p-2 m-2 d-flex justify-content-between'> 
+                            <div key={pill.id} className='border border-dark p-2 m-2 d-flex justify-content-between '> 
                                 <div>
                                     <h3 className="PillName">{pill.name}</h3>
                                     <h4 className="PillText">{pill.intro.split('\n').map(subintro=>( 
