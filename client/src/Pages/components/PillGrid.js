@@ -25,7 +25,7 @@ const PillGrid = ({Pills,title,handleDelete}) => {
                                             <div key={Math.random() + ""}>{subgiveDrug.time} : take {subgiveDrug.dose} pill(s)</div>
                                         ))}
                                     </h4>
-                                    <img src={pill.image} alt="PLEASE LOAD IMAGE"></img>
+                                    <img src={pill.image} alt="PLEASE LOAD IMAGE" width="200" height="200"></img>
                                 </div>
 
                                 <div>
