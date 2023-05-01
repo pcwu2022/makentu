@@ -105,7 +105,7 @@ const postData = async (req, res) => {
 const getImage = async (req, res) => {
     fs.readFile('../api/' + req.path, (err, data) => {
         if (err){
-            console.log(err); //!
+            res.sendFile(path.join(__dirname, '../image/default.jpg'));
         } else {
             //res.sendFile(import.meta.url.substring(0, import.meta.url.indexOf("/scripts")) + req.path);
             res.sendFile(path.join(__dirname, '../' , req.path));
