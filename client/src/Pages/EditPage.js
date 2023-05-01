@@ -36,6 +36,7 @@ const EditPill=()=>{
             setIntro(elData.intro);
             setNum(elData.num);
             setGiveDrug(elData.giveDrug);
+            setImage(elData.image);
         } catch (err) {
             console.error(err);
         }
@@ -56,6 +57,22 @@ const EditPill=()=>{
          const newGiveDrug = giveDrug.filter((_,id)=>id != idx);;
          setGiveDrug(newGiveDrug);
      }
+
+     const handleImageChange = (e) => {
+        const formData = new FormData();
+        formData.append("image", e.target.files[0]);
+        fetch(sessionStorage.getItem("backHref") + "postdata/image?id=" + id, {
+            method: "POST",
+            mode: "cors",
+            body: formData
+        })
+        .then(data => data.json())
+        .then((data) => {
+            console.log((sessionStorage.getItem("backHref") +  data.image).replace("//image", "/image"));
+            setImage((sessionStorage.getItem("backHref") +  data.image).replace("//image", "/image"));
+        });
+     }
+
      const onSubmit = () => {
         try {
             let localArr = JSON.parse(sessionStorage.getItem("data"));
@@ -66,8 +83,13 @@ const EditPill=()=>{
                 intro: intro,
                 num: num,
                 giveDrug: giveDrug,
-                image: "https://www.webpagescreenshot.info/image-url/1gk2ouU96" //! default
+                image: image 
             };
+            for (let element of localArr){
+                if (element.image.indexOf(sessionStorage.getItem("backHref")) !== -1){
+                    element.image = element.image.substring(sessionStorage.getItem("backHref").length, element.image.length);
+                }
+            }
             sessionStorage.setItem("data", JSON.stringify(localArr));
             fetch(sessionStorage.getItem("backHref") + "postdata/modify", {
                 method: "POST",
@@ -118,7 +140,14 @@ const EditPill=()=>{
                     // value={image}
                     // onClick={setImage()}
                 >Pill Photo: </label>
-                <input type="file" required className="EditPhoto" />
+                <img src={image}></img>
+                <input 
+                    type="file" 
+                    accept="image/*"
+                    required 
+                    className="EditPhoto" 
+                    onChange={handleImageChange}
+                />
                 <br></br>
 
                 <label className="Edit_subheader"> Drug Remaining Number: </label>

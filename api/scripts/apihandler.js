@@ -3,7 +3,7 @@ import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 
-const __dirname = path.dirname(fileURLToPath(import.meta.url))
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 // get drug
 const getDrug = (rawData, device) => {
@@ -64,6 +64,12 @@ const modifyDrug = async (rawData, deviceName, deviceData) => {
     return sendObj;
 }
 
+const saveImage = async (image, id) => {
+    let suffix = image.name.substring(image.name.length-5, image.name.length);
+    suffix = suffix.substring(suffix.indexOf("."), suffix.length);
+    await image.mv(path.join(__dirname, '../image/pill' + id + suffix));
+    return {success:true, image: "/image/pill" + id + suffix};
+}
 
 const getData = async (req, res) => {
     let rawData = await loadjson.getData();
@@ -87,6 +93,9 @@ const postData = async (req, res) => {
         sendObj = handleLogin(rawData, req.body.username, req.body.password); //!
     } else if (action === "modify"){
         sendObj = await modifyDrug(rawData, req.body.deviceName, req.body.deviceData);
+    } else if (action === "image"){
+        // console.log(req.files);
+        sendObj = await saveImage(req.files.image, req.query.id);
     } else {
 
     }

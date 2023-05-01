@@ -57,8 +57,16 @@ const MainPage = () =>{
                 } else {
                     
                 }
+
+                // add image path
+                for (let element of jsonData.deviceData){
+                    if (element.image.indexOf("image/") !== -1  && element.image.indexOf("http" === -1)){
+                        element.image = (sessionStorage.getItem("backHref") + element.image).replace("//image", "/image");
+                    }
+                }
+                setPills(jsonData.deviceData);
+
                 if (jsonData.success === true){
-                    sessionStorage.setItem("device", jsonData.deviceName);
                     sessionStorage.setItem("data", JSON.stringify(jsonData.deviceData))
                 }
             })

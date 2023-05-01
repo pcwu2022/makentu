@@ -70,9 +70,15 @@
                     {
                         "time": "06:00",
                         "dose": "1"
+                    },
+                    {
+                        "time": "08:00",
+                        "dose": "1",
+                        "id": 1,
+                        "": 1
                     }
                 ],
-                "image": "https://www.webpagescreenshot.info/image-url/1gk2ouU96"
+                "image": "image/pill0.png"
             },
             {
                 "id": "1",
@@ -90,7 +96,7 @@
                         "dose": "2"
                     }
                 ],
-                "image": "https://www.webpagescreenshot.info/image-url/1gk2ouU96"
+                "image": "image/pill1.jpg"
             },
             {
                 "id": "2",
@@ -104,7 +110,7 @@
                         "dose": "1"
                     }
                 ],
-                "image": "https://www.webpagescreenshot.info/image-url/1gk2ouU96"
+                "image": "image/default.jpg"
             },
             {
                 "id": "3",
@@ -118,7 +124,7 @@
                         "dose": "1"
                     }
                 ],
-                "image": "https://www.webpagescreenshot.info/image-url/1gk2ouU96"
+                "image": "image/default.jpg"
             },
             {
                 "id": "4",
@@ -132,7 +138,7 @@
                         "dose": "1"
                     }
                 ],
-                "image": "https://www.webpagescreenshot.info/image-url/1gk2ouU96"
+                "image": "image/default.jpg"
             },
             {
                 "id": "5",
@@ -146,7 +152,7 @@
                         "dose": "1"
                     }
                 ],
-                "image": "https://www.webpagescreenshot.info/image-url/1gk2ouU96"
+                "image": "image/default.jpg"
             }
         ]
     },

@@ -46,6 +46,14 @@ const LoginPage = () =>{
                 } else {
                     
                 }
+
+                // add image path
+                for (let element of jsonData.deviceData){
+                    if (element.image.indexOf("/image/") !== -1 && element.image.indexOf("http" === -1)){
+                        element.image = (backHref + element.image).replace("//image", "/image");
+                    }
+                }
+
                 // go to main page
                 if (jsonData.success === true){
                     sessionStorage.setItem("device", jsonData.deviceName);

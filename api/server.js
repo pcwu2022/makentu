@@ -1,5 +1,6 @@
 import express from 'express';
 import cors from 'cors';
+import fileUpload from 'express-fileupload';
 
 import apihandler from './scripts/apihandler.js';
 
@@ -10,6 +11,7 @@ const PORT = process.env.PORT || 3001;
 
 app.use(express.json());
 app.use(cors());
+app.use(fileUpload());
 
 
 app.get('/getdata/:action', apihandler.getData);
