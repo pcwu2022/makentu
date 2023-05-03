@@ -13,8 +13,81 @@
 }
 
 .PillGrid{
-    border:  solid 2px  #3e6259ff;
-    padding: 2px;
-    margin: 20px;
+    display: inline-block;
+    margin:18px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-right: 35px;
+    padding-left: 45px;
+    border: solid 5px #3e6259ff;
+    width: 800px;
+    height: 300px;
+    border-radius: 100px;
+    height: fit-content;
     /* border-dark p-2 m-2 d-flex justify-content-between */
 }
+/* 
+.PillGridB{
+    margin-left:50%;
+    margin-top: 10px;
+    padding: 30px;
+    /* border-dark p-2 m-2 d-flex justify-content-between 
+} */
+
+/* .colleft{
+    width: 500px;
+    height: 400px;
+    margin-right:0px;
+    
+} */
+.container{
+    display:flex;
+    justify-content: center;
+    margin-top:30px;
+}
+/* .colright{
+    width: 500px;
+    height: 400px;
+    float: right;
+    float: top;
+} */
+
+/* .Image{
+    position: relative;
+    top: 5px;
+    left: 100px;
+} */
+
+.Image{
+    max-height: 100%;  
+    max-width: 100%; 
+    width: auto;
+    height: auto;
+    position: absolute;  
+    top: 0;  
+    bottom: 0;  
+    left: 0;  
+    right: 0;  
+    margin: auto;
+}
+
+.frame{
+    height: 250px; 
+    width: 250px;
+    position: relative;
+    top: 1px;
+    left: 40px;
+}
+.EDButton{
+    position: relative;
+    top: 5px;
+    left: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.text{
+    display: inline-block;
+    width: 245px;
+} 

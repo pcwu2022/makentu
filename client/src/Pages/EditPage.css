@@ -1,3 +1,7 @@
+.EditPill{
+    text-align: center;
+}
+
 .Edit_header{
     background-color: #d4f2d2ff;
     min-height: 13vh;
@@ -13,6 +17,7 @@
 .Edit_form{
     border-bottom: #d4f2d2ff;
     display: flex;
+    text-align: center;
     flex-direction: column;
     align-items: center;
     font-size: calc(5px + 3vmin);
@@ -26,11 +31,11 @@
     /* border-block-style: revert; */
     padding-right: 2px;
     padding: 8px;
-    display: flex;
+    display: block;
     font-size: calc(5px + 3vmin);
     color: #3e6259ff;
-    margin-left: 200px;
-    margin-right: 200px;
+    /* margin-left: 200px;
+    margin-right: 200px; */
     margin-top: 3px;
     margin-bottom: 25px;
     align-content: space-between;
@@ -38,6 +43,10 @@
     align-items: center;
     flex-direction: row;
     flex-wrap: nowrap;
+    text-align: center;
+    /* max-width: 1180px; */
+    margin-left: 10%;
+    margin-right: 10%;
 }
 
 .EditTime_subheader{
@@ -55,12 +64,32 @@
 
 .EditTime_header{
     background-color: #d4f2d2ff;
-    display: flex;
-    flex-direction: column;
+    /* display: flex; */
+    /* flex-direction: column; */
     align-items: center;
     justify-content: center;
     font-size: calc(5px + 3vmin);
     font-family: serif;
     color:#3e6259ff;
     border-radius: 50%;
+
+}
+
+.image{
+    max-height: 100%;  
+    max-width: 100%; 
+    width: auto;
+    height: auto;
+    position: absolute;  
+    top: 0;  
+    bottom: 0;  
+    left: 0;  
+    right: 0;  
+    margin: auto;
+}
+
+.frame{
+    height: 250px; 
+    width: 250px;
+    position: relative;
 }

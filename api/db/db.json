@@ -64,7 +64,7 @@
                 "id": "0",
                 "have": true,
                 "name": "Drug01",
-                "intro": "It's for fever.\n Don't take too much.",
+                "intro": "It's for fever.\nplease remembe...\n Don't take too much.",
                 "num": "1",
                 "giveDrug": [
                     {
@@ -78,22 +78,24 @@
                         "": 1
                     }
                 ],
-                "image": "image/pill0.png"
+                "image": "image/pill0.jpg"
             },
             {
                 "id": "1",
                 "have": true,
-                "name": "Drug02",
-                "intro": "Hello world",
-                "num": "0",
+                "name": "Ibuprofen",
+                "intro": "NSAID,\nFor Headache, Toothache, Arthritis and so on",
+                "num": "30",
                 "giveDrug": [
                     {
-                        "time": "06:00",
-                        "dose": "1"
+                        "time": "09:00",
+                        "dose": "1",
+                        "": 0
                     },
                     {
-                        "time": "18:00",
-                        "dose": "2"
+                        "time": "21:00",
+                        "dose": "1",
+                        "": 1
                     }
                 ],
                 "image": "image/pill1.jpg"
@@ -138,7 +140,7 @@
                         "dose": "1"
                     }
                 ],
-                "image": "undefined"
+                "image": "image/pill4.jpg"
             },
             {
                 "id": "5",

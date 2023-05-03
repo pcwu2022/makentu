@@ -140,7 +140,9 @@ const EditPill=()=>{
                     // value={image}
                     // onClick={setImage()}
                 >Pill Photo: </label>
-                <img src={image}></img>
+                <div className="frame">
+                    <img src={image} className="image" width="300" height="300" ></img>
+                </div>
                 <input 
                     type="file" 
                     accept="image/*"
@@ -185,7 +187,7 @@ const EditPill=()=>{
                                 value={item.dose}
                                 onChange={(e) =>handleInput(e,index)}
                             /> 
-                        <p>&nbsp; &nbsp;&nbsp; &nbsp;</p>
+                        <span>&nbsp; &nbsp;&nbsp; &nbsp;</span>
                         <button 
                             className="btn btn-outline-danger " 
                             id={item.id}

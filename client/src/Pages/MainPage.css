@@ -36,9 +36,25 @@
     font-size:25px;
     position: relative;
     font-family: Palatino;
-    color: white
+    color: white;
+    display: flex;
+    justify-content: center;
 }
 
 .SetLimit{
-    margin-top: 25px;
+    display: flex;
+    font-family: Palatino;
+    font-size:25px;
+    color: #3e6259ff;
+    justify-content: flex-start;
+    flex-wrap: nowrap;
+    align-content: flex-end;
+    align-items: center;
+    flex-direction: column;
+}
+
+.container2{
+    margin-right: 50px;
+    margin-left: 50px;
+    margin-top: 10px;
 }
