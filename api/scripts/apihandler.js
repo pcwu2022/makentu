@@ -2,6 +2,7 @@ import loadjson from './loadjson.js';
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import fetch from 'node-fetch';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
@@ -23,6 +24,45 @@ const getDrug = (rawData, device) => {
         console.error(err);
     }
     return sendObj;
+}
+
+// arduino api
+const getArduino = (rawData, query) => {
+    return new Promise((resolve, reject) => {
+        let sendObj = {};
+        if (query.ask === undefined){
+            resolve({success: false});
+        }
+
+        if (query.ask.indexOf("t") !== -1){
+            // time
+            let time = (new Date()).toTimeString().split(' ')[0].substring(0, 5);
+            sendObj.time = time;
+        }
+        if (query.ask.indexOf("g") !== -1){
+            // get
+        }
+        if (query.ask.indexOf("n") !== -1){
+            // number
+        }
+        if (query.ask.indexOf("w") !== -1){
+            // weather
+            fetch("https://opendata.cwb.gov.tw/api/v1/rest/datastore/F-D0047-061?Authorization=CWB-5FDE2B68-32AF-4591-8BBD-B050A9FE4FFF")
+            .then(data => data.json())
+            .then((data) => {
+                data = data.records.locations[0].location[6]
+                sendObj.weather = data;
+                resolve(sendObj);
+            }).catch((err) => {
+                console.error(err);
+                sendObj.success = false;
+                resolve(sendObj);
+            });
+        } else {
+            resolve(sendObj);
+        }
+    });
+    
 }
 
 // login
@@ -78,6 +118,8 @@ const getData = async (req, res) => {
 
     if (action === "drug"){
         sendObj = getDrug(rawData, req.query.device); //!
+    } else if (action === "arduino"){
+        sendObj = await getArduino(rawData, req.query);
     } else {
 
     }
