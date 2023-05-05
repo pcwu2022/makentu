@@ -40,18 +40,26 @@ const getArduino = (rawData, query) => {
             sendObj.time = time;
         }
         if (query.ask.indexOf("g") !== -1){
-            // get
+            // give
+
         }
         if (query.ask.indexOf("n") !== -1){
             // number
+            let number = "";
+            for (let device of rawData.devices["arduino8266"]){
+                number += (device.num.length === 1)?("0"+device.num):device.num;
+            }
+            sendObj.number = number;
         }
         if (query.ask.indexOf("w") !== -1){
             // weather
             fetch("https://opendata.cwb.gov.tw/api/v1/rest/datastore/F-D0047-061?Authorization=CWB-5FDE2B68-32AF-4591-8BBD-B050A9FE4FFF")
             .then(data => data.json())
             .then((data) => {
-                data = data.records.locations[0].location[6]
-                sendObj.weather = data;
+                data = data.records.locations[0].location[6];
+                let temp = data.weatherElement[3].time[0].elementValue[0].value;
+                let percentage = data.weatherElement[0].time[0].elementValue[0].value;
+                sendObj.weather = temp + "," + percentage;
                 resolve(sendObj);
             }).catch((err) => {
                 console.error(err);
@@ -145,7 +153,7 @@ const postData = async (req, res) => {
 }
 
 const getImage = async (req, res) => {
-    fs.readFile('../api/' + req.path, (err, data) => {
+    fs.readFile('./' + req.path, (err, data) => {
         if (err){
             res.sendFile(path.join(__dirname, '../image/default.jpg'));
         } else {
