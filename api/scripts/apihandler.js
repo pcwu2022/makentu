@@ -45,10 +45,13 @@ const getArduino = (rawData, query) => {
         // get data //!
         if (query.heart !== undefined){
             rawData.deviceControl["arduino8266"].heart = query.heart;
-            loadjson.saveData(rawData);
+        }
+        if (query.button !== undefined){
+            rawData.deviceControl["arduino8266"].emergency = (query.button + "")==="true";
         }
 
         if (query.ask === undefined){
+            loadjson.saveData(rawData);
             resolve(sendObj);
             return;
         }
@@ -189,7 +192,7 @@ const getUpdate = (rawData, query) => {
     let sendObj = {};
     sendObj.heart = rawData.deviceControl["arduino8266"].heart;
     sendObj.emergency = rawData.deviceControl["arduino8266"].emergency;
-    if (query.dismiss === true){
+    if (query.dismiss === true || true){ //! before dismiss
         rawData.deviceControl["arduino8266"].emergency = false;
         loadjson.saveData(rawData);
     }
