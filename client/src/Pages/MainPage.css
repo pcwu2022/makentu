@@ -58,3 +58,23 @@
     margin-left: 50px;
     margin-top: 10px;
 }
+
+.Appointment_block{
+    border: solid 5px #3e6259ff;
+    background-color: rgb(238, 248, 237);
+}
+
+.Add_Appointment_header{
+    background-color: #d4f2d2ff;
+    min-height: 10vh;
+    min-width: 10vh;
+    display: flex;
+    border-radius: 60px;
+    width:560px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(13px + 3vmin);
+    font-family: serif;
+    color:#3e6259ff;
+}

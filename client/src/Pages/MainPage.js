@@ -249,19 +249,14 @@ const MainPage = () =>{
             <span className="Main_header">Return Appointment Information</span>
 
             <div className="BigAppointment_block">
-                <div className="Appointment_block">
+                <div>
                     {Appointments.length!==0 && Appointments.map((appointment)=>{
                         return(
-                        <div>
-                            {appointment.have==true && <div className="Appointment_subblock">
-                                    <h2>{appointment.hospital}</h2>
-                                    <br></br>
+                        <div className="Appointment_block m-5 p-5 d-flex justify-content-center">
+                            {appointment.have==true && appointment.hospital!='' && <div className="Appointment_subblock">
+                                    <h2>{appointment.hospital} &nbsp;&nbsp; {appointment.department}</h2>
                                     <h3>{appointment.time}</h3>
-                                    <br></br>
-                                    <h3>{appointment.Department}</h3>
-                                    <br></br>
                                     <h3>{appointment.address}</h3>
-                                    <br></br>
                                     <a href={appointment.website} class="btn btn-info" role="button">Link Button</a>
                                 </div>
                             }
@@ -270,8 +265,7 @@ const MainPage = () =>{
                     })}
                 </div>
                 {mode==='add' && <div className='AddAppointment'>
-                                    Add a New Appointment
-
+                                    <span className="Add_Appointment_header">Add a New Appointment</span>
                                     <div className='ADD_block'>
                                         <div>
                                             <label> Hospital: </label>

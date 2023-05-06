@@ -18,12 +18,12 @@ const PillGrid = ({Pills,title,handleDelete}) => {
                                     <div key={pill.id} className=' d-flex PillGrid'> 
                                         <div>
                                             <div className="text">
-                                            <h3 className="PillName">{pill.name}</h3>
+                                            <h3 className="PillName"><b>{pill.name}</b></h3>
                                             <h4 className="PillText">{pill.intro.split('\n').map(subintro=>( 
                                                 <span key={subintro}>{subintro}<br/></span>
                                             ))}</h4>
-                                            <h4 className="PillText">Remaining Numbers: {pill.num}</h4>
-                                            <h4 className="PillText">Taking time:
+                                            <h4 className="PillText"><b>Numbers: </b>{pill.num}</h4>
+                                            <h4 className="PillText"><b>Taking time:</b>
                                                 {pill.giveDrug.map((subgiveDrug)=>(
                                                     <div key={Math.random() + ""}>{subgiveDrug.time} : take {subgiveDrug.dose} pill(s)</div>
                                                 ))}
