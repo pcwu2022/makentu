@@ -28,6 +28,7 @@ const LoginPage = () =>{
         fetch(backHref + "postdata/login", {
             method: "POST",
             mode: "cors",
+            "Access-Control-Allow-Origin": "*",
             headers: {
                 "Content-Type": "application/json"
             },

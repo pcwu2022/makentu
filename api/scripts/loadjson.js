@@ -33,6 +33,7 @@ const getData = () => {
                     let jsonData = JSON.parse(data);
                     resolve(jsonData);
                 } catch (err) {
+                    console.log(data);
                     console.error(err);
                     reject(err);
                 }
