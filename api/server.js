@@ -20,6 +20,8 @@ app.get('/image/:action', apihandler.getImage);
 
 app.post('/postdata/:action', apihandler.postData);
 
+app.get('/feed', apihandler.feed);
+
 app.get('*', (req, res) => {
     res.send({message: "Hello, welcome to the backend port."});
 });

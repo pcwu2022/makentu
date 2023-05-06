@@ -37,6 +37,28 @@ const getDrug = (rawData, device) => {
     return sendObj;
 }
 
+
+//! feed data
+let enableTest = false;
+let feedG = "0000000";
+
+const feed = (req, res) => {
+    if (req.query.type === "html"){
+        res.sendFile(path.join(__dirname, "./feed.html"));
+    } else {
+        console.log(req.query);
+        if (req.query.enable === 'true'){
+            enableTest = true;
+            feedG = req.query.val;
+        } else {
+            enableTest = false;
+        }
+        res.send({success: true});
+    }
+}
+
+//! end feed data
+
 // arduino api
 const getArduino = (rawData, query) => {
     return new Promise((resolve, reject) => {
@@ -64,6 +86,15 @@ const getArduino = (rawData, query) => {
             sendObj.time = time;
         }
         if (query.ask.indexOf("g") !== -1){
+            //! feed data
+            if (enableTest){
+                console.log(feedG);
+                sendObj.give = feedG;
+                feedG = "0000000"; // restart
+                resolve(sendObj);
+                return;
+            }
+            //! end feed data
             // give
             let pillData = rawData.devices["arduino8266"];
             
@@ -296,4 +327,4 @@ const getImage = async (req, res) => {
     });
 }
 
-export default {getData, postData, getImage};
+export default {getData, postData, getImage, feed};

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <head>
+        <title>Test Api</title>
+    </head>
+    <body>
+        <label for="ipt">Test API(g value, length=7):</label><input id = "ipt" type="text">
+        <button id="submit">Submit</button>
+        <button id="enable">Enable API</button><br>
+        <div><span id="g"></span></div>
+        <script>
+            let button = document.getElementById("submit");
+            let ipt = document.getElementById("ipt");
+            let enable = document.getElementById("enable");
+            let enableBool = false;
+            let g = document.getElementById("g");
+            button.onclick = () => {
+                let val = ipt.value;
+                fetch("./feed?val=" + ipt.value + "&enable="+enableBool)
+                .then(data => data.json()).then((data) => {
+                    if (enableBool){
+                        g.innerHTML = "Updated api: g=" + ipt.value + ", time=" + (new Date()).toTimeString();
+                    }
+                });
+            }
+            enable.onclick = () => {
+                enableBool = !enableBool;
+                enable.innerHTML = (enableBool)?"Disable API":"Enable API";
+            }
+        </script>
+    </body>
+</html>
