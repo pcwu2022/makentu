@@ -78,3 +78,48 @@
     font-family: serif;
     color:#3e6259ff;
 }
+.Emergencybg{
+    position: fixed;
+    background-color:rgba(225, 0, 0, 0.5); 
+    height: 100%;
+    width:100%;
+    z-index:5000;
+    top: 0px;
+    text-align:center;
+}
+
+.emergencybtn{
+    width:400px;
+    height:100px;
+    position: relative;
+    top: 45%;
+    
+}
+.AddAppointment{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    border: solid 4px green;
+    border-radius: 150px;
+    margin-top: 100px;
+    margin-bottom: 50px;
+    /* max-width:900px; */
+    margin-left: 20%;
+    margin-right: 20%;
+    position: relative;
+    /* left:15% */
+}
+.ADD_block{
+
+}
+.Add_Appointment_subheader{
+    display:flex;
+}
+.BigAppointment_block{
+    text-align:center;
+}
+.TopAddAppointment{
+    text-align:center;
+}
+/* className = {(Emergency)?"Emergencybg":"Normalbg"} */

@@ -144,8 +144,8 @@
                 "id": "4",
                 "have": true,
                 "name": " 5-Repaglinide",
-                "intro": "It's is an antidiabetic drug in the class of medications known as meglitinides",
-                "num": "20",
+                "intro": "It's is an antidiabetic drug in the class of medications known as meglitinides.",
+                "num": "16",
                 "giveDrug": [
                     {
                         "time": "12:52",
@@ -156,6 +156,11 @@
                         "time": "12:48",
                         "dose": "2",
                         "id": 1
+                    },
+                    {
+                        "time": "23:40",
+                        "dose": "1",
+                        "id": 2
                     }
                 ],
                 "image": "image/pill4.webp"
@@ -193,21 +198,23 @@
             "appointments": [
                 {
                     "have": true,
-                    "hospital": "臺大醫院",
-                    "time": "05/20 (六) 12:00",
-                    "department": "Cardiology",
-                    "address": "中山南路7號",
-                    "website": "https://www.ntuh.gov.tw/ntuh/ntuhgroup.jsp",
-                    "id": "0"
+                    "hospital": "國立臺大醫院",
+                    "time": "05/20 18:00",
+                    "Department": "",
+                    "address": "100台北市中正區中山南路7號",
+                    "website": "https://www.ntuh.gov.tw/ntuh/Fpage.action?muid=69&fid=127",
+                    "id": 0,
+                    "department": "復健科 15號"
                 },
                 {
                     "have": true,
-                    "hospital": "1",
-                    "time": "",
+                    "hospital": "新竹馬偕醫院",
+                    "time": "06/28 19:30",
                     "Department": "",
-                    "address": "",
-                    "website": "",
-                    "id": "1"
+                    "address": "新竹市東區光復路二段690號",
+                    "website": "https://www.mmh.org.tw/",
+                    "id": 1,
+                    "department": "心血管科 111號"
                 }
             ]
         }

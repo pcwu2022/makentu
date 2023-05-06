@@ -16,7 +16,7 @@ const MainPage = () =>{
 
     //! handle emergency
     const handleEmergency = () => {
-
+        setEmergency(true);
     }
 
     const handleAppointmentInput = (e) =>{   
@@ -175,6 +175,7 @@ const MainPage = () =>{
     }, []);
 
     const Oxygen=99;
+    const [Emergency, setEmergency] = useState();
     const [Heartrate, setHeartrate] = useState(60);
     const [LowerLimitOxygen,setLowerLimitOxygen] =useState(85);
     const [LowerLimitHeartrate,setLowerLimitHeartrate] =useState(50);
@@ -243,7 +244,16 @@ const MainPage = () =>{
     console.log("mode2",mode);
 
     return(
-        <div id = "root">   
+        <div id = "root" >  
+            {Emergency==true && <div className="Emergencybg">
+                <button type="button" className="emergencybtn btn btn-warning" onClick={()=>{
+                    setEmergency(false);
+                    fetch(sessionStorage.getItem("backHref")+ "getdata/update?dismiss="+true)
+                    .catch((err) => console.error(err));
+                }}>
+                <b>Please Click Here To Lift The Emergency State</b></button>
+                
+            </div> }
             <span className="Main_header">HOME</span>
             <div className="Main">
                 <PillGrid Pills={Pills} handleDelete={handleDelete}/>
@@ -298,27 +308,31 @@ const MainPage = () =>{
                         return(
                         <div>
                             {appointment.have==true && <div className="Appointment_block m-5 p-5">
+                                    <h2><b>My Appointment:{appointment.id+1}</b></h2>
                                     <h2>{appointment.hospital} &nbsp;&nbsp; {appointment.department}</h2>
                                     <h3>{appointment.time}</h3>
                                     <h3>{appointment.address}</h3>
                                     <a href={appointment.website} class="btn btn-info" role="button">Hospital Website Link</a>
+                                    <br></br>
+                                    <br></br>
                                     <button 
                                         className="btn btn-outline-danger " 
                                         // id={appointment.id}
                                         onClick={(e) =>DeleteAppointments(e, appointment.id)}
                                     >
-                                    X </button>
+                                    Delete </button>
                                 </div>
                             }
                         </div>
                         );
                     })}
                 </div>
-                {mode==='add' && <div className='AddAppointment'>
+                {mode==='add' && <div className='TopAddAppointment'>
+                    <div className='AddAppointment'>
                                     <span className="Add_Appointment_header">Add a New Appointment</span>
-                                    <div className='ADD_block'>
+                                    <div className='ADD_block m-3'>
                                         <div>
-                                            <label> Hospital: </label>
+                                            <label className="Add_Appointment_subheader m-2.5"> Hospital: </label>
                                             <input 
                                                 type="text"
                                                 required
@@ -327,7 +341,7 @@ const MainPage = () =>{
                                                 onChange={(e)=>handleAppointmentInput(e)}
                                             />
                                             <br></br>
-                                            <label> Time: </label>
+                                            <label className="Add_Appointment_subheader m-3"> Time: </label>
                                             <input 
                                                 type="text"
                                                 required
@@ -336,7 +350,7 @@ const MainPage = () =>{
                                                 onChange={(e)=>handleAppointmentInput(e)}
                                             />
                                             <br></br>
-                                            <label> Department: </label>
+                                            <label className="Add_Appointment_subheader m-3"> Department: </label>
                                             <input 
                                                 type="text"
                                                 required
@@ -345,7 +359,7 @@ const MainPage = () =>{
                                                 onChange={(e)=>handleAppointmentInput(e)}
                                             />
                                             <br></br>
-                                            <label> Address: </label>
+                                            <label className="Add_Appointment_subheader m-3"> Address: </label>
                                             <textarea
                                                 type="text"
                                                 required
@@ -354,7 +368,7 @@ const MainPage = () =>{
                                                 onChange={(e)=>handleAppointmentInput(e)}
                                             ></textarea>
                                             <br></br>
-                                            <label>Website: </label>
+                                            <label className="Add_Appointment_subheader m-3">Website: </label>
                                             <input 
                                                 type="text"
                                                 required
@@ -362,19 +376,18 @@ const MainPage = () =>{
                                                 value={Appointments[Appointments.length-1].website}
                                                 onChange={(e)=>handleAppointmentInput(e)}
                                             />
-                                            <br></br>
                                             
                                         </div>
-                                        <br></br>
-                                    </div>
-                                    <br></br>
-                                    
+                                    </div>                                    
                                     <button className="btn btn-outline-success" onClick={()=>{
                                         setMode('not_add')
                                         onSubmitAppointment()
                                     }}> SAVE </button>
+                                    <br></br>
+                                </div>
                                 </div>
                             }
+                            <br></br>
                 <div className='d-flex justify-content-center'> 
                     {mode==='add' &&
                         <button className="btn btn-secondary btn-lg btn-block disabled" onClick={()=>{
@@ -388,9 +401,11 @@ const MainPage = () =>{
                                         setMode('add');
                         }}> ADD </button>
                     }
+                    <br></br>
                 </div>
             </div>
-
+            <br></br>
+            <br></br>
         </div>
     )
 }
