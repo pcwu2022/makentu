@@ -190,9 +190,26 @@
         "ballywang": {
             "password": "12345678",
             "connectedDevice": "arduino8266",
-            "appointments": {
-                
-            }
+            "appointments": [
+                {
+                    "have":true ,
+                    "hospital": "臺大醫院", 
+                    "time": "05/20 (六) 12:00",
+                    "department":"Cardiology", 
+                    "address":"中山南路7號",
+                    "website":"https://www.ntuh.gov.tw/ntuh/ntuhgroup.jsp",
+                    "id": 0 
+                },
+                {
+                    "have":true ,
+                    "hospital": "臺大醫院", 
+                    "time": "05/20 (六) 12:00",
+                    "department":"Cardiology", 
+                    "address":"中山南路7號",
+                    "website":"https://www.ntuh.gov.tw/ntuh/ntuhgroup.jsp",
+                    "id": 0   
+                }
+            ]
         }
     },
     "deviceControl": {
