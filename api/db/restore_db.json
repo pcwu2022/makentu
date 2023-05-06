@@ -1,0 +1,232 @@
+{
+    "devices": {
+        "defaultDevice": [
+            {
+                "id": "0",
+                "have": true,
+                "name": "Drug01",
+                "intro": "asdf",
+                "num": "1",
+                "giveDrug": [
+                    {
+                        "time": "06:00",
+                        "dose": "5",
+                        "id": 0,
+                        "": 0
+                    }
+                ],
+                "image": "https://www.webpagescreenshot.info/image-url/1gk2ouU96"
+            },
+            {
+                "id": "1",
+                "have": false,
+                "name": "",
+                "intro": "",
+                "num": "0",
+                "giveDrug": [],
+                "image": "https://www.webpagescreenshot.info/image-url/1gk2ouU96"
+            },
+            {
+                "id": "2",
+                "have": true,
+                "name": "Drug03",
+                "intro": "",
+                "num": "0",
+                "giveDrug": []
+            },
+            {
+                "id": "3",
+                "have": true,
+                "name": "Drug04",
+                "intro": "",
+                "num": "0",
+                "giveDrug": []
+            },
+            {
+                "id": "4",
+                "have": true,
+                "name": "Drug05",
+                "intro": "",
+                "num": "0",
+                "giveDrug": []
+            },
+            {
+                "id": "5",
+                "have": true,
+                "name": "Drug06",
+                "intro": "",
+                "num": "0",
+                "giveDrug": []
+            }
+        ],
+        "arduino8266": [
+            {
+                "id": "0",
+                "have": true,
+                "name": "1-Aspirin ",
+                "intro": "It's used to reduce pain, fever, and/or inflammation, and as an antithrombotic.",
+                "num": "2",
+                "giveDrug": [
+                    {
+                        "time": "12:35",
+                        "dose": "1",
+                        "id": 0
+                    },
+                    {
+                        "time": "12:40",
+                        "dose": "2",
+                        "id": 1
+                    }
+                ],
+                "image": "image/pill0.jpg"
+            },
+            {
+                "id": "1",
+                "have": true,
+                "name": "2-Imidapril",
+                "intro": " It's is an ACE inhibitor used as an antihypertensive drug and for the treatment of chronic heart failure.",
+                "num": "60",
+                "giveDrug": [
+                    {
+                        "time": "12:20",
+                        "dose": "1",
+                        "id": 0
+                    }
+                ],
+                "image": "image/pill1.jpg"
+            },
+            {
+                "id": "2",
+                "have": true,
+                "name": "3-Febuxostat",
+                "intro": "It is a medication used long-term to treat gout due to high uric acid levels.",
+                "num": "0",
+                "giveDrug": [
+                    {
+                        "time": "12:28",
+                        "dose": "2",
+                        "id": 0
+                    },
+                    {
+                        "time": "12:30",
+                        "dose": "1",
+                        "id": 1
+                    }
+                ],
+                "image": "image/pill2.webp"
+            },
+            {
+                "id": "3",
+                "have": true,
+                "name": "4-Madopar",
+                "intro": "It is used in the management of Parkinson's disease in combination with L-DOPA",
+                "num": "28",
+                "giveDrug": [
+                    {
+                        "time": "12:40",
+                        "dose": "1",
+                        "id": 0
+                    },
+                    {
+                        "time": "12:43",
+                        "dose": "1",
+                        "id": 1
+                    },
+                    {
+                        "time": "12:45",
+                        "dose": "3",
+                        "id": 2
+                    }
+                ],
+                "image": "image/pill3.jpg"
+            },
+            {
+                "id": "4",
+                "have": true,
+                "name": " 5-Repaglinide",
+                "intro": "It's is an antidiabetic drug in the class of medications known as meglitinides.",
+                "num": "16",
+                "giveDrug": [
+                    {
+                        "time": "12:52",
+                        "dose": "1",
+                        "id": 0
+                    },
+                    {
+                        "time": "12:48",
+                        "dose": "2",
+                        "id": 1
+                    },
+                    {
+                        "time": "23:40",
+                        "dose": "1",
+                        "id": 2
+                    }
+                ],
+                "image": "image/pill4.webp"
+            },
+            {
+                "id": "5",
+                "have": true,
+                "name": "6-Reminyl",
+                "intro": "It's used for the treatment of cognitive decline in mild to moderate Alzheimer's disease and various other memory impairments.",
+                "num": "14",
+                "giveDrug": [
+                    {
+                        "time": "12:55",
+                        "dose": "2",
+                        "id": 0
+                    },
+                    {
+                        "time": "13:00",
+                        "dose": "1",
+                        "id": 1
+                    }
+                ],
+                "image": "image/pill5.jpg"
+            }
+        ]
+    },
+    "accounts": {
+        "ddm4534": {
+            "password": "12345678",
+            "connectedDevice": "defaultDevice"
+        },
+        "ballywang": {
+            "password": "12345678",
+            "connectedDevice": "arduino8266",
+            "appointments": [
+                {
+                    "have": true,
+                    "hospital": "國立臺大醫院",
+                    "time": "05/20 18:00",
+                    "Department": "",
+                    "address": "100台北市中正區中山南路7號",
+                    "website": "https://www.ntuh.gov.tw/ntuh/Fpage.action?muid=69&fid=127",
+                    "id": 0,
+                    "department": "復健科 15號"
+                },
+                {
+                    "have": true,
+                    "hospital": "新竹馬偕醫院",
+                    "time": "06/28 19:30",
+                    "Department": "",
+                    "address": "新竹市東區光復路二段690號",
+                    "website": "https://www.mmh.org.tw/",
+                    "id": 1,
+                    "department": "心血管科 111號"
+                }
+            ]
+        }
+    },
+    "deviceControl": {
+        "defualtDevice": {
+            "heart": "80",
+            "emergency": false
+        },
+        "arduino8266": {
+            "heart": "90",
+            "emergency": false
+        }
+    }
+}

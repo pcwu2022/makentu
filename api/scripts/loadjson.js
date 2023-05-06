@@ -1,6 +1,7 @@
 import fs from 'fs';
 
 const filePath = "./db/db.json";
+const filePath2 = "./db/restore_db.json"
 
 const saveData = (dataJson) => {
     return new Promise((resolve, reject) => {
@@ -22,6 +23,31 @@ const saveData = (dataJson) => {
     });
 }
 
+const restore = () => {
+    return new Promise((resolve, reject) => {
+        fs.readFile(filePath2, (err, data) => {
+            console.log("restore database");
+            if (err){
+                console.error(err);
+                reject(err);
+            } else {
+                fs.writeFile(filePath, data, 'utf-8', (err) => {
+                    if (err){
+                        console.error(err);
+                    } else {
+                        console.log("Restored Database");
+                        try{
+                            resolve(JSON.parse(data));
+                        } catch(err) {
+                            reject(err);
+                        }
+                    }
+                });
+            }
+        });
+    });
+}
+
 const getData = () => {
     return new Promise((resolve, reject) => {
         fs.readFile(filePath, (err, data) => {
@@ -32,10 +58,13 @@ const getData = () => {
                 try {
                     let jsonData = JSON.parse(data);
                     resolve(jsonData);
-                } catch (err) {
                     console.log(data);
-                    console.error(err);
-                    reject(err);
+                } catch (err) {
+                    restore().then((data) => {
+                        resolve(data);
+                    }).catch((err) => {
+                        reject(err)
+                    });
                 }
             }
         });
