@@ -24,13 +24,13 @@ const MainPage = () =>{
         newAppointments [num][e.target.name] = e.target.value;
         setAppointments(newAppointments);
     }
-    const AddAppointment= (e) =>{
-        let num = Appointments.length;
-        if (Appointments.length<1){
-            num = 0;
-        }
-        setAppointments([...Appointments,{have:true,hospital: '', time: '',Department:'', address:'', website:'',id:num}]);
-    }
+    // const AddAppointment= (e) =>{
+    //     let num = Appointments.length;
+    //     if (Appointments.length<1){
+    //         num = 0;
+    //     }
+    //     setAppointments([...Appointments,{have:true,hospital: '', time: '',Department:'', address:'', website:'',id:num}]);
+    // }
 
 
 
@@ -173,7 +173,7 @@ const MainPage = () =>{
         alertEvent3();
     }
     
-
+    console.log("mode2",mode);
 
     return(
         <div id = "root">   
@@ -224,12 +224,13 @@ const MainPage = () =>{
             </div>
             <br></br>
             <span className="Main_header">Return Appointment Information</span>
-            <div>
-                <div className="Appointment_block ">
+
+            <div className="BigAppointment_block">
+                <div className="Appointment_block">
                     {Appointments.length!==0 && Appointments.map((appointment)=>{
-                        if(appointment.have==true){
-                            return(
-                                <div className="Appointment_subblock">
+                        return(
+                        <div>
+                            {appointment.have==true && <div className="Appointment_subblock">
                                     <h2>{appointment.hospital}</h2>
                                     <br></br>
                                     <h3>{appointment.time}</h3>
@@ -240,12 +241,8 @@ const MainPage = () =>{
                                     <br></br>
                                     <a href={appointment.website} class="btn btn-info" role="button">Link Button</a>
                                 </div>
-                                
-                            )
-                        }
-                        if (mode==='add'){ 
-                            return(
-                                <div className='AddAppointment'>
+                            }
+                            {/* {mode==='add' && <div className='AddAppointment'>
                                     <div className='ADD_block'>
                                         <div>
                                             <label> Hospital: </label>
@@ -263,79 +260,41 @@ const MainPage = () =>{
                                     hihihihi
                                     <button className="btn btn-outline-success" onClick={()=>{setMode('not_add')}}> SAVE </button>
                                 </div>
-                            )}
-                        }
-                    )}
-                    <button className="btn btn-outline-dark" onClick={()=>{
-                        AddAppointment();
-                        setMode('add');
-                    }}> ADD </button>
+                            } */}
+                            {/* <button className="btn btn-outline-dark" onClick={()=>{
+                                // AddAppointment();
+                                setMode('add');
+                            }}> ADD </button> */}
+                        </div>
+                        );
+                    })}
                 </div>
-                <br></br>
-                {/* <div>
                 {mode==='add' && <div className='AddAppointment'>
-                    <div className='ADD_block'>
-                        <div>
-                            <label> Hospital: </label>
-                            <input 
-                                type="text"
-                                required
-                                value={appointment.hospital}
-                                onChange={(e)=>handleAppointmentInput(e)}
-                            />
-                            <br></br>
-                        </div> */}
-
-                        {/* {Appointments.filter((_,id)=>id == ).map((eachappointment,index)=>{
-                            return(
-                                <div>
-                                    <label> Hospital: </label>
-                                    <input 
-                                        type="text"
-                                        required
-                                        value={eachappointment.hospital}
-                                        onChange={(e)=>handleAppointmentInput(e.target.value,index)}
-                                    />
+                                    <div className='ADD_block'>
+                                        <div>
+                                            <label> Hospital: </label>
+                                            <input 
+                                                type="text"
+                                                required
+                                                value={appointment.hospital}
+                                                onChange={(e)=>handleAppointmentInput(e)}
+                                            />
+                                            <br></br>
+                                        </div>
+                                        <br></br>
+                                    </div>
                                     <br></br>
+                                    hihihihi
+                                    <button className="btn btn-outline-success" onClick={()=>{setMode('not_add')}}> SAVE </button>
                                 </div>
-                            )
-                            
-
-                        })} */}
-
-
-
-                        {/* <label className="000"> Hospital: </label>
-                        <input 
-                            type="text"
-                            required
-                            value={hospital}
-                            onChange={(e)=>setName(e.target.value)}
-                        />
-                    <br></br>
-                    <label className="Edit_subheader"> Drug Description: </label>
-                        <textarea 
-                            type="text"
-                            required
-                            value={intro}
-                            onChange={(e)=>setIntro(e.target.value)}
-                        ></textarea> */}
-                        {/* <br></br>
-                    </div>
-                    <br></br>
-                    <button className="btn btn-outline-success" onClick={()=>{setMode('not_add')}}> SAVE </button>
-                </div>
-                }
-                </div> */}
-                {/* <button className="btn btn-outline-dark" onClick={()=>{
-                    AddAppointment();
-                    setMode('add');
-                }}> ADD </button> */}
+                            }
+                <button className="btn btn-outline-dark" onClick={()=>{
+                                // AddAppointment();
+                                setMode('add');
+                }}> ADD </button>
             </div>
-            
-            <br></br>
-            <br></br>
+
         </div>
-    );
+    )
 }
 export default MainPage;
