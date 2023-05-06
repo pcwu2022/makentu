@@ -53,10 +53,10 @@ const getArduino = (rawData, query) => {
             return;
         }
 
+        let date = new Date();
+        date.setHours(date.getHours()+20);
         if (query.ask.indexOf("t") !== -1){
             // time
-            let date = new Date();
-            date.setHours(date.getHours()+16);
             let time = date.toTimeString().split(' ')[0].substring(0, 5);
             sendObj.time = time;
         }
@@ -81,14 +81,14 @@ const getArduino = (rawData, query) => {
             }
             
             // detect state
-            console.log(pillData.map(el => el.num));
-            console.log(pillState);
+            // console.log(pillData.map(el => el.num));
+            // console.log(pillState);
             
             // change state
             sendObj.give = "";
             let lastBit = "0"; // this time no pill
             let lastBitWarning = "0"; // next time no pill
-            let timeNow = (new Date()).getHours()*60 + (new Date()).getMinutes();
+            let timeNow = date.getHours()*60 + date.getMinutes();
             for (let i = 0; i < pillState.length; i++){
                 let keys = Object.keys(pillState[i]);
                 let pillNumber = 0;
