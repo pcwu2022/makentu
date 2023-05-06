@@ -4,6 +4,36 @@ import PillGrid from './components/PillGrid';
 import './MainPage.css';
 
 const MainPage = () =>{
+    
+    //for return
+    const[mode,setMode]=useState('not_add');
+    // const Appointments =[
+    //     {have:true ,hospital: '臺大醫院', time: '05/20 (六) 12:00',Department:'Cardiology', address:'中山南路7號', website:'https://www.ntuh.gov.tw/ntuh/ntuhgroup.jsp',id: 0 },
+    //     {have:true ,hospital: '馬偕紀念醫院', time: '05/20 (六) 12:00',Department:'Neurology', address:'104台北市中山區中山北路二段92號', website:'https://www.mmh.org.tw/home.php?area=tp',id: 1 }
+    // ]
+    const [Appointments,setAppointments] = useState([
+        {have:true ,hospital: '臺大醫院', time: '05/20 (六) 12:00',Department:'Cardiology', address:'中山南路7號', website:'https://www.ntuh.gov.tw/ntuh/ntuhgroup.jsp',id: 0 },
+        {have:true ,hospital: '馬偕紀念醫院', time: '05/20 (六) 12:00',Department:'Neurology', address:'104台北市中山區中山北路二段92號', website:'https://www.mmh.org.tw/home.php?area=tp',id: 1 }
+    ]);
+    const handleAppointmentInput = (e) =>{
+        let num = Appointments.length;
+        if (Appointments.length<1){
+            num = 0;
+        }
+        const newAppointments = [...Appointments];
+        newAppointments [num][e.target.name] = e.target.value;
+        setAppointments(newAppointments);
+    }
+    const AddAppointment= (e) =>{
+        let num = Appointments.length;
+        if (Appointments.length<1){
+            num = 0;
+        }
+        setAppointments([...Appointments,{have:true,hospital: '', time: '',Department:'', address:'', website:'',id:num}]);
+    }
+
+
+
     // get username from location
     const location = useLocation();
     const navigate = useNavigate();
@@ -192,6 +222,117 @@ const MainPage = () =>{
                     
                 </div>
             </div>
+            <br></br>
+            <span className="Main_header">Return Appointment Information</span>
+            <div>
+                <div className="Appointment_block ">
+                    {Appointments.length!==0 && Appointments.map((appointment)=>{
+                        if(appointment.have==true){
+                            return(
+                                <div className="Appointment_subblock">
+                                    <h2>{appointment.hospital}</h2>
+                                    <br></br>
+                                    <h3>{appointment.time}</h3>
+                                    <br></br>
+                                    <h3>{appointment.Department}</h3>
+                                    <br></br>
+                                    <h3>{appointment.address}</h3>
+                                    <br></br>
+                                    <a href={appointment.website} class="btn btn-info" role="button">Link Button</a>
+                                </div>
+                                
+                            )
+                        }
+                        if (mode==='add'){ 
+                            return(
+                                <div className='AddAppointment'>
+                                    <div className='ADD_block'>
+                                        <div>
+                                            <label> Hospital: </label>
+                                            <input 
+                                                type="text"
+                                                required
+                                                value={appointment.hospital}
+                                                onChange={(e)=>handleAppointmentInput(e)}
+                                            />
+                                            <br></br>
+                                        </div>
+                                        <br></br>
+                                    </div>
+                                    <br></br>
+                                    hihihihi
+                                    <button className="btn btn-outline-success" onClick={()=>{setMode('not_add')}}> SAVE </button>
+                                </div>
+                            )}
+                        }
+                    )}
+                    <button className="btn btn-outline-dark" onClick={()=>{
+                        AddAppointment();
+                        setMode('add');
+                    }}> ADD </button>
+                </div>
+                <br></br>
+                {/* <div>
+                {mode==='add' && <div className='AddAppointment'>
+                    <div className='ADD_block'>
+                        <div>
+                            <label> Hospital: </label>
+                            <input 
+                                type="text"
+                                required
+                                value={appointment.hospital}
+                                onChange={(e)=>handleAppointmentInput(e)}
+                            />
+                            <br></br>
+                        </div> */}
+
+                        {/* {Appointments.filter((_,id)=>id == ).map((eachappointment,index)=>{
+                            return(
+                                <div>
+                                    <label> Hospital: </label>
+                                    <input 
+                                        type="text"
+                                        required
+                                        value={eachappointment.hospital}
+                                        onChange={(e)=>handleAppointmentInput(e.target.value,index)}
+                                    />
+                                    <br></br>
+                                </div>
+                            )
+                            
+
+                        })} */}
+
+
+
+                        {/* <label className="000"> Hospital: </label>
+                        <input 
+                            type="text"
+                            required
+                            value={hospital}
+                            onChange={(e)=>setName(e.target.value)}
+                        />
+                    <br></br>
+                    <label className="Edit_subheader"> Drug Description: </label>
+                        <textarea 
+                            type="text"
+                            required
+                            value={intro}
+                            onChange={(e)=>setIntro(e.target.value)}
+                        ></textarea> */}
+                        {/* <br></br>
+                    </div>
+                    <br></br>
+                    <button className="btn btn-outline-success" onClick={()=>{setMode('not_add')}}> SAVE </button>
+                </div>
+                }
+                </div> */}
+                {/* <button className="btn btn-outline-dark" onClick={()=>{
+                    AddAppointment();
+                    setMode('add');
+                }}> ADD </button> */}
+            </div>
+            
             <br></br>
             <br></br>
         </div>

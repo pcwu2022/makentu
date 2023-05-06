@@ -63,19 +63,19 @@
             {
                 "id": "0",
                 "have": true,
-                "name": "Drug01",
-                "intro": "It's for fever.\nplease remembe...\n Don't take too much.",
-                "num": "1",
+                "name": "1-Aspirin ",
+                "intro": "It's used to reduce pain, fever, and/or inflammation, and as an antithrombotic.",
+                "num": "2",
                 "giveDrug": [
                     {
-                        "time": "06:00",
-                        "dose": "1"
+                        "time": "12:35",
+                        "dose": "1",
+                        "id": 0
                     },
                     {
-                        "time": "08:00",
-                        "dose": "1",
-                        "id": 1,
-                        "": 1
+                        "time": "12:40",
+                        "dose": "2",
+                        "id": 1
                     }
                 ],
                 "image": "image/pill0.jpg"
@@ -83,19 +83,14 @@
             {
                 "id": "1",
                 "have": true,
-                "name": "Ibuprofen",
-                "intro": "NSAID,\nFor Headache, Toothache, Arthritis and so on",
-                "num": "30",
+                "name": "2-Imidapril",
+                "intro": " It's is an ACE inhibitor used as an antihypertensive drug and for the treatment of chronic heart failure.",
+                "num": "60",
                 "giveDrug": [
                     {
-                        "time": "09:00",
+                        "time": "12:20",
                         "dose": "1",
-                        "": 0
-                    },
-                    {
-                        "time": "21:00",
-                        "dose": "1",
-                        "": 1
+                        "id": 0
                     }
                 ],
                 "image": "image/pill1.jpg"
@@ -103,58 +98,87 @@
             {
                 "id": "2",
                 "have": true,
-                "name": "Drug03",
-                "intro": "Elliptical integrals",
+                "name": "3-Febuxostat",
+                "intro": "It is a medication used long-term to treat gout due to high uric acid levels.",
                 "num": "0",
                 "giveDrug": [
                     {
-                        "time": "06:00",
-                        "dose": "1"
+                        "time": "12:28",
+                        "dose": "2",
+                        "id": 0
+                    },
+                    {
+                        "time": "12:30",
+                        "dose": "1",
+                        "id": 1
                     }
                 ],
-                "image": "image/default.jpg"
+                "image": "image/pill2.webp"
             },
             {
                 "id": "3",
                 "have": true,
-                "name": "HHH",
-                "intro": "DNE",
-                "num": "0",
+                "name": "4-Madopar",
+                "intro": "It is used in the management of Parkinson's disease in combination with L-DOPA",
+                "num": "28",
                 "giveDrug": [
                     {
-                        "time": "06:00",
-                        "dose": "1"
+                        "time": "12:40",
+                        "dose": "1",
+                        "id": 0
+                    },
+                    {
+                        "time": "12:43",
+                        "dose": "1",
+                        "id": 1
+                    },
+                    {
+                        "time": "12:45",
+                        "dose": "3",
+                        "id": 2
                     }
                 ],
-                "image": "image/default.jpg"
+                "image": "image/pill3.jpg"
             },
             {
                 "id": "4",
                 "have": true,
-                "name": "Drug05",
-                "intro": "發燒 、 headache",
-                "num": "0",
+                "name": " 5-Repaglinide",
+                "intro": "It's is an antidiabetic drug in the class of medications known as meglitinides",
+                "num": "20",
                 "giveDrug": [
                     {
-                        "time": "06:00",
-                        "dose": "1"
+                        "time": "12:52",
+                        "dose": "1",
+                        "id": 0
+                    },
+                    {
+                        "time": "12:48",
+                        "dose": "2",
+                        "id": 1
                     }
                 ],
-                "image": "image/pill4.jpg"
+                "image": "image/pill4.webp"
             },
             {
                 "id": "5",
                 "have": true,
-                "name": "Yaa",
-                "intro": "Cool",
-                "num": "0",
+                "name": "6-Reminyl",
+                "intro": "It's used for the treatment of cognitive decline in mild to moderate Alzheimer's disease and various other memory impairments.",
+                "num": "14",
                 "giveDrug": [
                     {
-                        "time": "06:00",
-                        "dose": "1"
+                        "time": "12:55",
+                        "dose": "2",
+                        "id": 0
+                    },
+                    {
+                        "time": "13:00",
+                        "dose": "1",
+                        "id": 1
                     }
                 ],
-                "image": "image/default.jpg"
+                "image": "image/pill5.jpg"
             }
         ]
     },

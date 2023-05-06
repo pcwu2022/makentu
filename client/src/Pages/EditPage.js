@@ -45,12 +45,15 @@ const EditPill=()=>{
     const handleInput = (e,index) =>{
         const newgiveDrug = [...giveDrug];
         newgiveDrug [index][e.target.name] = e.target.value;
-        newgiveDrug [index][e.target.id] = index;
+        //newgiveDrug [index][e.target.id] = index;
         setGiveDrug(newgiveDrug);
     }
 
     const AddGiveDrug = (e) =>{
         let num = giveDrug.length;
+        if (giveDrug.length<1){
+            num = 0;
+        }
         setGiveDrug([...giveDrug,{time: '06:00', dose: 0,id:num}]);
     }
      const DeleteGiveDrug = (e, idx) =>{
@@ -162,7 +165,8 @@ const EditPill=()=>{
                 <br></br>
             </form>
             {giveDrug.map((item, index) => {
-                //console.log("index:",index)
+                console.log("index:",index)
+                console.log("item:",item)
                 return(
                     <div className="Edit_Time" key = {index}> 
 
