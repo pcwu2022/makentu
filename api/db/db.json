@@ -189,7 +189,10 @@
         },
         "ballywang": {
             "password": "12345678",
-            "connectedDevice": "arduino8266"
+            "connectedDevice": "arduino8266",
+            "appointments": {
+                
+            }
         }
     },
     "deviceControl": {

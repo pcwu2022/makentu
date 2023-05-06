@@ -50,7 +50,9 @@ const getArduino = (rawData, query) => {
 
         if (query.ask.indexOf("t") !== -1){
             // time
-            let time = (new Date()).toTimeString().split(' ')[0].substring(0, 5);
+            let date = new Date();
+            date.setHours(date.getHours()+16);
+            let time = date.toTimeString().split(' ')[0].substring(0, 5);
             sendObj.time = time;
         }
         if (query.ask.indexOf("g") !== -1){
@@ -67,7 +69,7 @@ const getArduino = (rawData, query) => {
                 if (pillData[i].giveDrug.length !== 0){
                     for (let giveTime of pillData[i].giveDrug){
                         if (pillState[i][giveTime.time] === undefined){
-                            pillState[i][giveTime.time] = false; // not yet time
+                            pillState[i][giveTime.time] = true; // prevent default restart
                         }
                     }
                 }
@@ -145,6 +147,7 @@ const getArduino = (rawData, query) => {
                 data = data.records.locations[0].location[6];
                 let temp = data.weatherElement[3].time[0].elementValue[0].value;
                 let percentage = data.weatherElement[0].time[0].elementValue[0].value;
+                percentage = percentage
                 sendObj.weather = temp + "," + percentage;
                 resolve(sendObj);
             }).catch((err) => {
