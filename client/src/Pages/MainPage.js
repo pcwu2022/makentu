@@ -54,7 +54,18 @@ const MainPage = () =>{
             console.error(err);
         }
     }
-
+    const DeleteAppointments= (e, idx) =>{
+        console.log("e",e)
+        console.log("idx",idx)
+        console.log(Appointments)
+        const newAppointments = Appointments.filter((_,id)=>id != idx);
+        setAppointments(newAppointments);
+        const tempAppointments = [...Appointments]
+        for(let i=0;i<Appointments.length;i++){
+            tempAppointments[i].id=i;
+        }
+        setAppointments(tempAppointments);        
+    }
 
     // get username from location
     const location = useLocation();
@@ -132,6 +143,9 @@ const MainPage = () =>{
         fetch(sessionStorage.getItem("backHref")+ "getdata/appointment?username=" + sessionStorage.getItem("username"))
         .then(data => data.json())
         .then((data) => {
+            for(let i=0;i<data.appointments.length;i++){
+                data.appointments[i].id=i;
+            }
             setAppointments([...data.appointments]);
         }).catch(err => console.error(err));
 
@@ -272,12 +286,18 @@ const MainPage = () =>{
                 <div>
                     {Appointments.length!==0 && Appointments.map((appointment)=>{
                         return(
-                        <div className="Appointment_block m-5 p-5 d-flex justify-content-center">
-                            {appointment.have==true && appointment.hospital!='' && <div className="Appointment_subblock">
+                        <div>
+                            {appointment.have==true && <div className="Appointment_block m-5 p-5">
                                     <h2>{appointment.hospital} &nbsp;&nbsp; {appointment.department}</h2>
                                     <h3>{appointment.time}</h3>
                                     <h3>{appointment.address}</h3>
-                                    <a href={appointment.website} class="btn btn-info" role="button">Link Button</a>
+                                    <a href={appointment.website} class="btn btn-info" role="button">Hospital Website Link</a>
+                                    <button 
+                                        className="btn btn-outline-danger " 
+                                        // id={appointment.id}
+                                        onClick={(e) =>DeleteAppointments (e, appointment.id)}
+                                    >
+                                    X </button>
                                 </div>
                             }
                         </div>
@@ -345,10 +365,20 @@ const MainPage = () =>{
                                     }}> SAVE </button>
                                 </div>
                             }
-                <button className="btn btn-outline-dark" onClick={()=>{
-                                AddAppointment();
-                                setMode('add');
-                }}> ADD </button>
+                <div className='d-flex justify-content-center'> 
+                    {mode==='add' &&
+                        <button className="btn btn-secondary btn-lg btn-block disabled" onClick={()=>{
+                                        AddAppointment();
+                                        setMode('add');
+                        }}> ADD </button>
+                    }
+                    {mode==='not_add' &&
+                        <button className="btn btn-secondary btn-lg btn-block" onClick={()=>{
+                                        AddAppointment();
+                                        setMode('add');
+                        }}> ADD </button>
+                    }
+                </div>
             </div>
 
         </div>
