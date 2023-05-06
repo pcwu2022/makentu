@@ -58,7 +58,6 @@ const getData = () => {
                 try {
                     let jsonData = JSON.parse(data);
                     resolve(jsonData);
-                    console.log(data);
                 } catch (err) {
                     restore().then((data) => {
                         resolve(data);
