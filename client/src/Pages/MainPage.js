@@ -12,26 +12,65 @@ const MainPage = () =>{
     //     {have:true ,hospital: '馬偕紀念醫院', time: '05/20 (六) 12:00',Department:'Neurology', address:'104台北市中山區中山北路二段92號', website:'https://www.mmh.org.tw/home.php?area=tp',id: 1 }
     // ]
     const [Appointments,setAppointments] = useState([
-        {have:true ,hospital: '臺大醫院', time: '05/20 (六) 12:00',Department:'Cardiology', address:'中山南路7號', website:'https://www.ntuh.gov.tw/ntuh/ntuhgroup.jsp',id: 0 },
-        {have:true ,hospital: '馬偕紀念醫院', time: '05/20 (六) 12:00',Department:'Neurology', address:'104台北市中山區中山北路二段92號', website:'https://www.mmh.org.tw/home.php?area=tp',id: 1 }
+        {have:true ,hospital: '臺大醫院', time: '05/20 (六) 12:00',department:'Cardiology', address:'中山南路7號', website:'https://www.ntuh.gov.tw/ntuh/ntuhgroup.jsp',id: 0 },
+        {have:true ,hospital: '馬偕紀念醫院', time: '05/20 (六) 12:00',department:'Neurology', address:'104台北市中山區中山北路二段92號', website:'https://www.mmh.org.tw/home.php?area=tp',id: 1 }
     ]);
-    const handleAppointmentInput = (e) =>{
+    const handleAppointmentInput = (e) =>{   
+        console.log("e.target",e.target);   
+        console.log("e.target.name",e.target.name);   
+        console.log("e.target.value",e.target.value);  
+        const newAppointments = [...Appointments];
+        newAppointments [Appointments.length-1][e.target.name] = e.target.value;
+        setAppointments(newAppointments);
+    }
+    const AddAppointment= (e) =>{
         let num = Appointments.length;
         if (Appointments.length<1){
             num = 0;
         }
-        const newAppointments = [...Appointments];
-        newAppointments [num][e.target.name] = e.target.value;
-        setAppointments(newAppointments);
+        setAppointments([...Appointments,{have:false,hospital: '', time: '',Department:'', address:'', website:'',id:num}]);
     }
-    // const AddAppointment= (e) =>{
-    //     let num = Appointments.length;
-    //     if (Appointments.length<1){
-    //         num = 0;
+    
+    const onSubmitAppointment = () =>{
+    //     try {
+    //         let localArr = JSON.parse(sessionStorage.getItem("data"));
+    //         localArr[id] = { //! modify 
+    //             id: id + "",
+    //             have: true,
+    //             name: name,
+    //             intro: intro,
+    //             num: num,
+    //             giveDrug: giveDrug,
+    //             image: image 
+    //         };
+    //         for (let element of localArr){
+    //             if (element.image.indexOf(sessionStorage.getItem("backHref")) !== -1){
+    //                 element.image = element.image.substring(sessionStorage.getItem("backHref").length, element.image.length);
+    //             }
+    //         }
+    //         sessionStorage.setItem("data", JSON.stringify(localArr));
+    //         fetch(sessionStorage.getItem("backHref") + "postdata/modify", {
+    //             method: "POST",
+    //             mode: "cors",
+    //             headers: {"Content-Type": "application/json"},
+    //             body: JSON.stringify({
+    //                 deviceName: sessionStorage.getItem("device"),
+    //                 deviceData: localArr
+    //             })
+    //         })
+    //         .then(data => data.json())
+    //         .then((data) => {
+    //             if (data.success !== true){
+    //                 console.log("Failed to send.");
+    //             }
+    //         });
+    //         navigate("/MainPage", {state: {username: sessionStorage.getItem("username")}})
+    //     } catch (err) {
+    //         console.error(err);
+    //         alert("Cannot save.");
     //     }
-    //     setAppointments([...Appointments,{have:true,hospital: '', time: '',Department:'', address:'', website:'',id:num}]);
-    // }
 
+     }
 
 
     // get username from location
@@ -242,54 +281,74 @@ const MainPage = () =>{
                                     <a href={appointment.website} class="btn btn-info" role="button">Link Button</a>
                                 </div>
                             }
-                            {/* {mode==='add' && <div className='AddAppointment'>
-                                    <div className='ADD_block'>
-                                        <div>
-                                            <label> Hospital: </label>
-                                            <input 
-                                                type="text"
-                                                required
-                                                value={appointment.hospital}
-                                                onChange={(e)=>handleAppointmentInput(e)}
-                                            />
-                                            <br></br>
-                                        </div>
-                                        <br></br>
-                                    </div>
-                                    <br></br>
-                                    hihihihi
-                                    <button className="btn btn-outline-success" onClick={()=>{setMode('not_add')}}> SAVE </button>
-                                </div>
-                            } */}
-                            {/* <button className="btn btn-outline-dark" onClick={()=>{
-                                // AddAppointment();
-                                setMode('add');
-                            }}> ADD </button> */}
                         </div>
                         );
                     })}
                 </div>
                 {mode==='add' && <div className='AddAppointment'>
+                                    Add a New Appointment
+
                                     <div className='ADD_block'>
                                         <div>
                                             <label> Hospital: </label>
                                             <input 
                                                 type="text"
                                                 required
-                                                value={appointment.hospital}
+                                                name="hospital"
+                                                value={Appointments[Appointments.length-1].hospital}
                                                 onChange={(e)=>handleAppointmentInput(e)}
                                             />
                                             <br></br>
+                                            <label> Time: </label>
+                                            <input 
+                                                type="text"
+                                                required
+                                                name="time"
+                                                value={Appointments[Appointments.length-1].time}
+                                                onChange={(e)=>handleAppointmentInput(e)}
+                                            />
+                                            <br></br>
+                                            <label> Department: </label>
+                                            <input 
+                                                type="text"
+                                                required
+                                                name="department"
+                                                value={Appointments[Appointments.length-1].department}
+                                                onChange={(e)=>handleAppointmentInput(e)}
+                                            />
+                                            <br></br>
+                                            <label> Address: </label>
+                                            <textarea
+                                                type="text"
+                                                required
+                                                name="address"
+                                                value={Appointments[Appointments.length-1].address}
+                                                onChange={(e)=>handleAppointmentInput(e)}
+                                            ></textarea>
+                                            <br></br>
+                                            <label>Website: </label>
+                                            <input 
+                                                type="text"
+                                                required
+                                                name="website"
+                                                value={Appointments[Appointments.length-1].website}
+                                                onChange={(e)=>handleAppointmentInput(e)}
+                                            />
+                                            <br></br>
+                                            
                                         </div>
                                         <br></br>
                                     </div>
                                     <br></br>
-                                    hihihihi
-                                    <button className="btn btn-outline-success" onClick={()=>{setMode('not_add')}}> SAVE </button>
+                                    
+                                    <button className="btn btn-outline-success" onClick={()=>{
+                                        setMode('not_add')
+                                        onSubmitAppointment()
+                                    }}> SAVE </button>
                                 </div>
                             }
                 <button className="btn btn-outline-dark" onClick={()=>{
-                                // AddAppointment();
+                                AddAppointment();
                                 setMode('add');
                 }}> ADD </button>
             </div>
