@@ -3,6 +3,9 @@ import { Link, useNavigate, useLocation } from "react-router-dom";
 import PillGrid from './components/PillGrid';
 import './MainPage.css';
 
+let flag = false;
+let num =0;
+
 const MainPage = () =>{
     
     //for return
@@ -96,7 +99,9 @@ const MainPage = () =>{
                 navigate("/", {state: {username: null}});
             } else {
                 // update state
-                location.state.username = sessionStorage.getItem("username");
+                if (location.state !== null){
+                    location.state.username = sessionStorage.getItem("username");
+                }
             }
         }
         if (localArr.length === 0){
@@ -175,11 +180,12 @@ const MainPage = () =>{
     }, []);
 
     const Oxygen=99;
-    const [Emergency, setEmergency] = useState();
-    const [Heartrate, setHeartrate] = useState(60);
+    const [Emergency, setEmergency] = useState(0);
+    const [Heartrate, setHeartrate] = useState(90);
     const [LowerLimitOxygen,setLowerLimitOxygen] =useState(85);
     const [LowerLimitHeartrate,setLowerLimitHeartrate] =useState(50);
     const [UpperLimitHeartrate,setUpperLimitHeartrate] =useState(120);
+    
     const handleDelete = async (id) =>{
         // await
         // const newPills = Pills.filter(pill => pill.id !== id);
@@ -222,6 +228,7 @@ const MainPage = () =>{
     }
 
     function alertEvent1() {
+        
         alert(" Your blood oxygen is too low, please pay attention! ");
     }
     function alertEvent2() {
@@ -231,9 +238,11 @@ const MainPage = () =>{
         alert(" Your heartrate is too high, please pay attention! ");
     }
     
+    
     if (Oxygen < LowerLimitOxygen){
         alertEvent1();
     }
+    
     if (Heartrate < LowerLimitHeartrate){
         alertEvent2();
     }
@@ -241,18 +250,19 @@ const MainPage = () =>{
         alertEvent3();
     }
     
-    console.log("mode2",mode);
-
     return(
+        // {console.log('start')}
         <div id = "root" >  
-            {Emergency==true && <div className="Emergencybg">
+            {(Emergency==true) && <div className="Emergencybg">
                 <button type="button" className="emergencybtn btn btn-warning" onClick={()=>{
+                    
                     setEmergency(false);
+                    // console.log('emergencyinin',Emergency);
                     fetch(sessionStorage.getItem("backHref")+ "getdata/update?dismiss="+true)
                     .catch((err) => console.error(err));
                 }}>
                 <b>Please Click Here To Lift The Emergency State</b></button>
-                
+                }
             </div> }
             <span className="Main_header">HOME</span>
             <div className="Main">
@@ -276,7 +286,10 @@ const MainPage = () =>{
                     </div>
                     
                     <div className="Heartrate col-6">
+                        {/* {passLimit==false && <span className="HealthSubtitle">Heartrate : {Heartrate} (Beat per minute) </span>} */}
                         <span className="HealthSubtitle">Heartrate : {Heartrate} (Beat per minute) </span>
+                        {/* {passLimit==true && <span className="HealthSubtitle2">Heartrate : {Heartrate} (Beat per minute) </span>} 
+                        {console.log(passLimit)}                       */}
                         <br></br>
                         <div className="SetLimit">
                         <label> Lower-limit: </label>
@@ -308,7 +321,7 @@ const MainPage = () =>{
                         return(
                         <div>
                             {appointment.have==true && <div className="Appointment_block m-5 p-5">
-                                    <h2><b>My Appointment:{appointment.id+1}</b></h2>
+                                    <h2><b>My Appointment:</b></h2>
                                     <h2>{appointment.hospital} &nbsp;&nbsp; {appointment.department}</h2>
                                     <h3>{appointment.time}</h3>
                                     <h3>{appointment.address}</h3>

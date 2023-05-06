@@ -40,7 +40,20 @@
     display: flex;
     justify-content: center;
 }
-
+.HealthSubtitle2{
+    text-align:center;
+    /* margin-left: 30%; */
+    background-color: #3e6259ff;
+    padding: 8px;
+    border-radius: 10px;
+    margin-top: 5px;
+    font-size:30px;
+    position: relative;
+    font-family: Palatino;
+    color: red;
+    display: flex;
+    justify-content: center;
+}
 .SetLimit{
     display: flex;
     font-family: Palatino;
