@@ -6,6 +6,17 @@ import fetch from 'node-fetch';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
+// state SCLD
+let pillState = [];
+
+/*
+[
+    {
+        "06:00" : false
+    }
+]
+*/
+
 // get drug
 const getDrug = (rawData, device) => {
     let sendObj = {};
@@ -34,6 +45,9 @@ const getArduino = (rawData, query) => {
             resolve({success: false});
         }
 
+        // get motor //!
+
+
         if (query.ask.indexOf("t") !== -1){
             // time
             let time = (new Date()).toTimeString().split(' ')[0].substring(0, 5);
@@ -41,7 +55,79 @@ const getArduino = (rawData, query) => {
         }
         if (query.ask.indexOf("g") !== -1){
             // give
+            let pillData = rawData.devices["arduino8266"];
+            
+            // initialize
+            if (pillState.length === 0){
+                for (let i = 0; i < pillData.length; i++){
+                    pillState.push({});
+                }
+            }
+            for (let i = 0; i < pillData.length; i++){
+                if (pillData[i].giveDrug.length !== 0){
+                    for (let giveTime of pillData[i].giveDrug){
+                        if (pillState[i][giveTime.time] === undefined){
+                            pillState[i][giveTime.time] = false; // not yet time
+                        }
+                    }
+                }
+            }
+            
+            // detect state
+            console.log(pillData.map(el => el.num));
+            console.log(pillState);
+            
+            // change state
+            sendObj.give = "";
+            let lastBit = "0"; // this time no pill
+            let lastBitWarning = "0"; // next time no pill
+            let timeNow = (new Date()).getHours()*60 + (new Date()).getMinutes();
+            for (let i = 0; i < pillState.length; i++){
+                let keys = Object.keys(pillState[i]);
+                let pillNumber = 0;
+                for (let key of keys){
+                    let time = parseInt(key.substring(0, 2))*60 + parseInt(key.substring(3, 5));
+                    if (timeNow < time){ // reset to false
+                        pillState[i][key] = false;
+                    } else {
+                        if (pillState[i][key] === false){ // have not given drug
+                            // set to true
+                            pillState[i][key] = true;
+                            // tell machine to give drug
+                            for (let el of pillData[i].giveDrug){
+                                let currNum = parseInt(pillData[i].num);
+                                let dose = parseInt(el.dose);
+                                if (el.time === key){
+                                    if (currNum >= dose){
+                                        // has pills left
+                                        pillData[i].num = currNum - dose + "";
+                                        pillNumber += dose;
+                                        if (currNum < dose*2){
+                                            lastBitWarning = "2";
+                                        }
+                                    } else {
+                                        // no pills left
+                                        pillData[i].num = "0";
+                                        lastBit = "1";
+                                        pillNumber += currNum;
+                                    }
+                                } else {
+                                    if (currNum < dose){
+                                        lastBitWarning = "2";
+                                    }
+                                }
+                                
+                            }
+                        }
+                    }
+                }
+                sendObj.give += "" + pillNumber;
+            }
+            sendObj.give += (lastBit === "0")?lastBitWarning:lastBit;
 
+            // write back to db
+            rawData.devices["arduino8266"] = pillData;
+            loadjson.saveData(rawData).catch(err => console.error(err));
         }
         if (query.ask.indexOf("n") !== -1){
             // number
