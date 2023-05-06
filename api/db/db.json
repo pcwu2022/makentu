@@ -198,16 +198,7 @@
                     "department": "Cardiology",
                     "address": "中山南路7號",
                     "website": "https://www.ntuh.gov.tw/ntuh/ntuhgroup.jsp",
-                    "id": 0
-                },
-                {
-                    "have": true,
-                    "hospital": "臺大醫院",
-                    "time": "05/20 (六) 12:00",
-                    "department": "Cardiology",
-                    "address": "中山南路7號",
-                    "website": "https://www.ntuh.gov.tw/ntuh/ntuhgroup.jsp",
-                    "id": 1
+                    "id": "0"
                 },
                 {
                     "have": true,
@@ -216,7 +207,7 @@
                     "Department": "",
                     "address": "",
                     "website": "",
-                    "id": 2
+                    "id": "1"
                 },
                 {
                     "have": true,
@@ -225,7 +216,7 @@
                     "Department": "",
                     "address": "",
                     "website": "",
-                    "id": 3
+                    "id": 2
                 },
                 {
                     "have": true,
@@ -234,25 +225,7 @@
                     "Department": "",
                     "address": "",
                     "website": "",
-                    "id": 4
-                },
-                {
-                    "have": true,
-                    "hospital": "4",
-                    "time": "",
-                    "Department": "",
-                    "address": "",
-                    "website": "",
-                    "id": 5
-                },
-                {
-                    "have": true,
-                    "hospital": "5",
-                    "time": "",
-                    "Department": "",
-                    "address": "",
-                    "website": "",
-                    "id": 6
+                    "id": "2"
                 }
             ]
         }

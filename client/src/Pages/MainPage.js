@@ -36,6 +36,7 @@ const MainPage = () =>{
     
     const onSubmitAppointment = () =>{
         try {
+            console.log(Appointments);
             let appointments = [...Appointments];
             appointments[appointments.length-1].have = true;
             setAppointments(appointments);
@@ -47,7 +48,7 @@ const MainPage = () =>{
                 },
                 body: JSON.stringify({
                     username: sessionStorage.getItem("username"),
-                    appointments: [...Appointments]
+                    appointments: [...appointments]
                 })
             })
         } catch (err){
@@ -58,13 +59,17 @@ const MainPage = () =>{
         console.log("e",e)
         console.log("idx",idx)
         console.log(Appointments)
-        const newAppointments = Appointments.filter((_,id)=>id != idx);
+        const newAppointments = Appointments.filter((_,id)=>id != ""+idx);
+        console.log("newAppointments",newAppointments)
         setAppointments(newAppointments);
-        const tempAppointments = [...Appointments]
-        for(let i=0;i<Appointments.length;i++){
-            tempAppointments[i].id=i;
+        // const tempAppointments = [...newAppointments]
+        for(let i=0;i<newAppointments.length;i++){
+            newAppointments[i].id=""+i;
         }
-        setAppointments(tempAppointments);        
+        // console.log("tempAppointments",tempAppointments)
+        setAppointments(newAppointments);  
+        console.log("newAppointments2",newAppointments)
+        onSubmitAppointment(); 
     }
 
     // get username from location
@@ -295,7 +300,7 @@ const MainPage = () =>{
                                     <button 
                                         className="btn btn-outline-danger " 
                                         // id={appointment.id}
-                                        onClick={(e) =>DeleteAppointments (e, appointment.id)}
+                                        onClick={(e) =>DeleteAppointments(e, appointment.id)}
                                     >
                                     X </button>
                                 </div>
