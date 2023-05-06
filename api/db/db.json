@@ -192,22 +192,42 @@
             "connectedDevice": "arduino8266",
             "appointments": [
                 {
-                    "have":true ,
-                    "hospital": "臺大醫院", 
+                    "have": true,
+                    "hospital": "臺大醫院",
                     "time": "05/20 (六) 12:00",
-                    "department":"Cardiology", 
-                    "address":"中山南路7號",
-                    "website":"https://www.ntuh.gov.tw/ntuh/ntuhgroup.jsp",
-                    "id": 0 
+                    "department": "Cardiology",
+                    "address": "中山南路7號",
+                    "website": "https://www.ntuh.gov.tw/ntuh/ntuhgroup.jsp",
+                    "id": 0
                 },
                 {
-                    "have":true ,
-                    "hospital": "臺大醫院", 
+                    "have": true,
+                    "hospital": "臺大醫院",
                     "time": "05/20 (六) 12:00",
-                    "department":"Cardiology", 
-                    "address":"中山南路7號",
-                    "website":"https://www.ntuh.gov.tw/ntuh/ntuhgroup.jsp",
-                    "id": 0   
+                    "department": "Cardiology",
+                    "address": "中山南路7號",
+                    "website": "https://www.ntuh.gov.tw/ntuh/ntuhgroup.jsp",
+                    "id": 0
+                },
+                {
+                    "have": true,
+                    "hospital": "asdf",
+                    "time": "asdf",
+                    "Department": "",
+                    "address": "adsf",
+                    "website": "adsf",
+                    "id": 2,
+                    "department": "adsf"
+                },
+                {
+                    "have": true,
+                    "hospital": "asdfg",
+                    "time": "asfg",
+                    "Department": "",
+                    "address": "asfgasdf",
+                    "website": "asdf",
+                    "id": 3,
+                    "department": "asf"
                 }
             ]
         }
@@ -216,5 +236,4 @@
         "defualtDevice": {},
         "arduino8266": {}
     }
-    
 }

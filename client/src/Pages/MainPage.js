@@ -11,10 +11,7 @@ const MainPage = () =>{
     //     {have:true ,hospital: '臺大醫院', time: '05/20 (六) 12:00',Department:'Cardiology', address:'中山南路7號', website:'https://www.ntuh.gov.tw/ntuh/ntuhgroup.jsp',id: 0 },
     //     {have:true ,hospital: '馬偕紀念醫院', time: '05/20 (六) 12:00',Department:'Neurology', address:'104台北市中山區中山北路二段92號', website:'https://www.mmh.org.tw/home.php?area=tp',id: 1 }
     // ]
-    const [Appointments,setAppointments] = useState([
-        {have:true ,hospital: '臺大醫院', time: '05/20 (六) 12:00',department:'Cardiology', address:'中山南路7號', website:'https://www.ntuh.gov.tw/ntuh/ntuhgroup.jsp',id: 0 },
-        {have:true ,hospital: '馬偕紀念醫院', time: '05/20 (六) 12:00',department:'Neurology', address:'104台北市中山區中山北路二段92號', website:'https://www.mmh.org.tw/home.php?area=tp',id: 1 }
-    ]);
+    const [Appointments,setAppointments] = useState([]);
     const handleAppointmentInput = (e) =>{   
         console.log("e.target",e.target);   
         console.log("e.target.name",e.target.name);   
@@ -32,45 +29,25 @@ const MainPage = () =>{
     }
     
     const onSubmitAppointment = () =>{
-    //     try {
-    //         let localArr = JSON.parse(sessionStorage.getItem("data"));
-    //         localArr[id] = { //! modify 
-    //             id: id + "",
-    //             have: true,
-    //             name: name,
-    //             intro: intro,
-    //             num: num,
-    //             giveDrug: giveDrug,
-    //             image: image 
-    //         };
-    //         for (let element of localArr){
-    //             if (element.image.indexOf(sessionStorage.getItem("backHref")) !== -1){
-    //                 element.image = element.image.substring(sessionStorage.getItem("backHref").length, element.image.length);
-    //             }
-    //         }
-    //         sessionStorage.setItem("data", JSON.stringify(localArr));
-    //         fetch(sessionStorage.getItem("backHref") + "postdata/modify", {
-    //             method: "POST",
-    //             mode: "cors",
-    //             headers: {"Content-Type": "application/json"},
-    //             body: JSON.stringify({
-    //                 deviceName: sessionStorage.getItem("device"),
-    //                 deviceData: localArr
-    //             })
-    //         })
-    //         .then(data => data.json())
-    //         .then((data) => {
-    //             if (data.success !== true){
-    //                 console.log("Failed to send.");
-    //             }
-    //         });
-    //         navigate("/MainPage", {state: {username: sessionStorage.getItem("username")}})
-    //     } catch (err) {
-    //         console.error(err);
-    //         alert("Cannot save.");
-    //     }
-
-     }
+        try {
+            let appointments = [...Appointments];
+            appointments[appointments.length-1].have = true;
+            setAppointments(appointments);
+            fetch(sessionStorage.getItem("backHref") + "postdata/appointment", {
+                method: "POST",
+                mode: "cors",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    username: sessionStorage.getItem("username"),
+                    appointments: [...Appointments]
+                })
+            })
+        } catch (err){
+            console.error(err);
+        }
+    }
 
 
     // get username from location
@@ -144,6 +121,13 @@ const MainPage = () =>{
             alert(`Cannot connect to server at ${sessionStorage.getItem("backHref")}`);
             console.error(err);
         });
+        
+        // fetch appointments
+        fetch(sessionStorage.getItem("backHref")+ "getdata/appointment?username=" + sessionStorage.getItem("username"))
+        .then(data => data.json())
+        .then((data) => {
+            setAppointments([...data.appointments]);
+        }).catch(err => console.error(err));
     }, []);
 
     const Oxygen=99;

@@ -162,6 +162,22 @@ const getArduino = (rawData, query) => {
     
 }
 
+// getAppointment
+const getAppointment = (rawData, query) => {
+    let sendObj = {};
+    const username = (query.username===undefined)?"ballywang":query.username; //username
+    let appointments = rawData.accounts[username].appointments;
+    sendObj.appointments = appointments;
+    return sendObj;
+}
+
+// save appointment
+const saveAppointment = async (rawData, username, appointments) => {
+    rawData.accounts[username].appointments = appointments;
+    await loadjson.saveData(rawData);
+    return {success: true};
+}
+
 // login
 const handleLogin = (rawData, username, password) => {
     let sendObj = {};
@@ -217,6 +233,8 @@ const getData = async (req, res) => {
         sendObj = getDrug(rawData, req.query.device); //!
     } else if (action === "arduino"){
         sendObj = await getArduino(rawData, req.query);
+    } else if (action === "appointment"){
+        sendObj = getAppointment(rawData, req.query);
     } else {
 
     }
@@ -235,6 +253,9 @@ const postData = async (req, res) => {
     } else if (action === "image"){
         // console.log(req.files);
         sendObj = await saveImage(req.files.image, req.query.id);
+    } else if (action === "appointment"){
+        // console.log(req.files);
+        sendObj = await saveAppointment(rawData, req.body.username, req.body.appointments);
     } else {
 
     }
