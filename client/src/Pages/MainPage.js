@@ -12,6 +12,7 @@ const MainPage = () =>{
     //     {have:true ,hospital: '馬偕紀念醫院', time: '05/20 (六) 12:00',Department:'Neurology', address:'104台北市中山區中山北路二段92號', website:'https://www.mmh.org.tw/home.php?area=tp',id: 1 }
     // ]
     const [Appointments,setAppointments] = useState([]);
+    const [testState, setTestState] = useState([1,2,3,4]);
 
     //! handle emergency
     const handleEmergency = () => {
@@ -34,12 +35,17 @@ const MainPage = () =>{
         setAppointments([...Appointments,{have:false,hospital: '', time: '',Department:'', address:'', website:'',id:num}]);
     }
     
-    const onSubmitAppointment = () =>{
+    const onSubmitAppointment = (newAppointments=null) =>{
         try {
+            let appointments = newAppointments;
+            if (newAppointments === null){
+                appointments = [...Appointments];
+                appointments[appointments.length-1].have = true;
+                setAppointments(appointments);
+            }
+            console.log(testState);
             console.log(Appointments);
-            let appointments = [...Appointments];
-            appointments[appointments.length-1].have = true;
-            setAppointments(appointments);
+            
             fetch(sessionStorage.getItem("backHref") + "postdata/appointment", {
                 method: "POST",
                 mode: "cors",
@@ -68,8 +74,7 @@ const MainPage = () =>{
         }
         // console.log("tempAppointments",tempAppointments)
         setAppointments(newAppointments);  
-        console.log("newAppointments2",newAppointments)
-        onSubmitAppointment(); 
+        onSubmitAppointment(newAppointments);
     }
 
     // get username from location

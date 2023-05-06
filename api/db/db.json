@@ -208,24 +208,6 @@
                     "address": "",
                     "website": "",
                     "id": "1"
-                },
-                {
-                    "have": true,
-                    "hospital": "2",
-                    "time": "",
-                    "Department": "",
-                    "address": "",
-                    "website": "",
-                    "id": 2
-                },
-                {
-                    "have": true,
-                    "hospital": "3",
-                    "time": "",
-                    "Department": "",
-                    "address": "",
-                    "website": "",
-                    "id": "2"
                 }
             ]
         }
