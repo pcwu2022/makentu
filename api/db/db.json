@@ -191,5 +191,9 @@
             "password": "12345678",
             "connectedDevice": "arduino8266"
         }
+    },
+    "deviceControl": {
+        "defualtDevice": {},
+        "arduino8266": {}
     }
 }
