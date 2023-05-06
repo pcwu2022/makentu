@@ -233,7 +233,13 @@
         }
     },
     "deviceControl": {
-        "defualtDevice": {},
-        "arduino8266": {}
+        "defualtDevice": {
+            "heart": "80",
+            "emergency": false
+        },
+        "arduino8266": {
+            "heart": "90",
+            "emergency": false
+        }
     }
 }

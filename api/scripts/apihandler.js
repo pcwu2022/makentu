@@ -41,12 +41,17 @@ const getDrug = (rawData, device) => {
 const getArduino = (rawData, query) => {
     return new Promise((resolve, reject) => {
         let sendObj = {};
-        if (query.ask === undefined){
-            resolve({success: false});
+
+        // get data //!
+        if (query.heart !== undefined){
+            rawData.deviceControl["arduino8266"].heart = query.heart;
+            loadjson.saveData(rawData);
         }
 
-        // get motor //!
-
+        if (query.ask === undefined){
+            resolve(sendObj);
+            return;
+        }
 
         if (query.ask.indexOf("t") !== -1){
             // time
@@ -129,7 +134,7 @@ const getArduino = (rawData, query) => {
 
             // write back to db
             rawData.devices["arduino8266"] = pillData;
-            loadjson.saveData(rawData).catch(err => console.error(err));
+            
         }
         if (query.ask.indexOf("n") !== -1){
             // number
@@ -139,6 +144,7 @@ const getArduino = (rawData, query) => {
             }
             sendObj.number = number;
         }
+        loadjson.saveData(rawData).catch(err => console.error(err));
         if (query.ask.indexOf("w") !== -1){
             // weather
             fetch("https://opendata.cwb.gov.tw/api/v1/rest/datastore/F-D0047-061?Authorization=CWB-5FDE2B68-32AF-4591-8BBD-B050A9FE4FFF")
@@ -176,6 +182,18 @@ const saveAppointment = async (rawData, username, appointments) => {
     rawData.accounts[username].appointments = appointments;
     await loadjson.saveData(rawData);
     return {success: true};
+}
+
+// update
+const getUpdate = (rawData, query) => {
+    let sendObj = {};
+    sendObj.heart = rawData.deviceControl["arduino8266"].heart;
+    sendObj.emergency = rawData.deviceControl["arduino8266"].emergency;
+    if (query.dismiss === true){
+        rawData.deviceControl["arduino8266"].emergency = false;
+        loadjson.saveData(rawData);
+    }
+    return sendObj;
 }
 
 // login
@@ -235,6 +253,8 @@ const getData = async (req, res) => {
         sendObj = await getArduino(rawData, req.query);
     } else if (action === "appointment"){
         sendObj = getAppointment(rawData, req.query);
+    } else if (action === "update"){
+        sendObj = getUpdate(rawData, req.query);
     } else {
 
     }

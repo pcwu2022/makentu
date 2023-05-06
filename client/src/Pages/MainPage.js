@@ -12,6 +12,12 @@ const MainPage = () =>{
     //     {have:true ,hospital: '馬偕紀念醫院', time: '05/20 (六) 12:00',Department:'Neurology', address:'104台北市中山區中山北路二段92號', website:'https://www.mmh.org.tw/home.php?area=tp',id: 1 }
     // ]
     const [Appointments,setAppointments] = useState([]);
+
+    //! handle emergency
+    const handleEmergency = () => {
+
+    }
+
     const handleAppointmentInput = (e) =>{   
         console.log("e.target",e.target);   
         console.log("e.target.name",e.target.name);   
@@ -128,10 +134,24 @@ const MainPage = () =>{
         .then((data) => {
             setAppointments([...data.appointments]);
         }).catch(err => console.error(err));
+
+        // interval
+        setInterval(() => {
+            fetch(sessionStorage.getItem("backHref")+ "getdata/update")
+                .then(data => data.json())
+                .then((data) => {
+                    if (data.emergency){
+                        handleEmergency();
+                    }
+                    setHeartrate(data.heart);
+                })
+                .catch((err) => console.error(err));
+        }, 3000);
+
     }, []);
 
     const Oxygen=99;
-    const Heartrate=60;
+    const [Heartrate, setHeartrate] = useState(60);
     const [LowerLimitOxygen,setLowerLimitOxygen] =useState(85);
     const [LowerLimitHeartrate,setLowerLimitHeartrate] =useState(50);
     const [UpperLimitHeartrate,setUpperLimitHeartrate] =useState(120);
